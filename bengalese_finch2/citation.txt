@@ -1,0 +1,5 @@
+Dataset
+Koumura, Takuya (2016): BirdsongRecognition. figshare. Media. https://doi.org/10.6084/m9.figshare.3470165.v1
+
+Paper
+Koumura T, Okanoya K (2016) Automatic Recognition of Element Classes and Boundaries in the Birdsong with Variable Sequences. PLoS ONE 11(7): e0159188. https://doi.org/10.1371/journal.pone.0159188
