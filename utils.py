@@ -1,5 +1,4 @@
 import soundfile as sf
-import torchvision.models as torchmodels
 import torch
 from torch import nn
 from torch.utils import data
@@ -21,9 +20,12 @@ class Dataset(data.Dataset):
 
     def __getitem__(self, idx):
         row = self.df.iloc[idx]
-        fs = sf.info(self.audiopath+row.fn).samplerate
-        sig, fs = sf.read(self.audiopath+row.fn, start=int((row.pos - self.sampleDur/2)*fs), stop=int((row.pos + self.sampleDur/2)*fs))
-        if len(sig) < self.sampleDur:
+        try:
+            info = sf.info(self.audiopath+row.fn)
+            dur, fs = info.duration, info.samplerate
+            start = int(np.clip(row.pos - self.sampleDur/2, 0, dur - self.sampleDur) * fs)
+            sig, fs = sf.read(self.audiopath+row.fn, start=start, stop=start + int(self.sampleDur*fs))
+        except:
             print(f'failed with {row.name}')
             return None
         if fs != self.sr:
@@ -52,12 +54,3 @@ class Reshape(nn.Module):
 
     def forward(self, x):
         return x.view(x.shape[0], *self.shape)
-
-
-def VGG():
-    vgg16 = torchmodels.vgg16(pretrained=True)
-    vgg16 = vgg16.features[:13]
-    for nm, mod in vgg16.named_modules():
-        if isinstance(mod, nn.MaxPool2d):
-            setattr(vgg16, nm,  nn.AvgPool2d(2 ,2))
-    return vgg16

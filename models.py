@@ -1,3 +1,4 @@
+import torchvision.models as torchmodels
 from torch import nn
 import utils as u
 from filterbank import STFT, MelFilter, Log1p
@@ -6,26 +7,27 @@ meta = {
   'bengalese_finch1':{
     'sr': 32000,
     'nfft': 512,
-    'sampleDur': 0.3
+    'sampleDur': 0.1
   },
   'bengalese_finch2':{
     'sr': 32000,
     'nfft': 512,
-    'sampleDur': 0.3
-  },
-  'california_thrasher':{
-    'nfft':512,
-    'sr': 44100,
-    'sampleDur': 0.5
-  },
-  'cassin_vireo':{
-    'sr':44100,
-    'sampleDur': 2
+    'sampleDur': 0.1
   },
   'black-headed_grosbeaks':{
     'sr':44100,
     'nfft':512,
-    'sampleDur':0.5
+    'sampleDur':0.35
+  },
+  'california_thrashers':{
+    'nfft':512,
+    'sr': 44100,
+    'sampleDur': 0.25
+  },
+  'cassin_vireo':{
+    'sr':44100,
+    'nfft':512,
+    'sampleDur': 0.5
   },
   'orcas':{
     'nfft': 1024,
@@ -39,10 +41,17 @@ meta = {
   }
 }
 
-N_MEL_BANDS= 128
+vgg16 = torchmodels.vgg16(pretrained=True)
+vgg16 = vgg16.features[:13]
+for nm, mod in vgg16.named_modules():
+    if isinstance(mod, nn.MaxPool2d):
+        setattr(vgg16, nm,  nn.AvgPool2d(2 ,2))
+
+
+N_MEL_BANDS= 64
 
 frontend = lambda sr, nfft, sampleDur : nn.Sequential(
-  STFT(nfft, int((sampleDur*sr - nfft)/N_MEL_BANDS)),
+  STFT(nfft, int((sampleDur*sr - nfft)/128)),
   MelFilter(sr, nfft, N_MEL_BANDS, 0, sr//2),
   Log1p(7, trainable=False)
 )
