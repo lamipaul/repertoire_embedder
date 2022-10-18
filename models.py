@@ -4,6 +4,11 @@ import utils as u
 from filterbank import STFT, MelFilter, Log1p
 
 meta = {
+  'zebra_finch':{
+    'sr': 44100,
+    'nfft': 1024,
+    'sampleDur': 0.15
+  },
   'bengalese_finch1':{
     'sr': 32000,
     'nfft': 512,
@@ -38,21 +43,24 @@ meta = {
     'nfft': 512,
     'sr': 11025,
     'sampleDur': 2
+  },
+  'globi':{
+    'nfft': 1024,
+    'sr': 48000,
+    'sampleDur': 4
   }
 }
 
-vgg16 = torchmodels.vgg16(pretrained=True)
+vgg16 = torchmodels.vgg16(weights=torchmodels.VGG16_Weights.DEFAULT)
 vgg16 = vgg16.features[:13]
 for nm, mod in vgg16.named_modules():
     if isinstance(mod, nn.MaxPool2d):
         setattr(vgg16, nm,  nn.AvgPool2d(2 ,2))
 
 
-N_MEL_BANDS= 64
-
-frontend = lambda sr, nfft, sampleDur : nn.Sequential(
+frontend = lambda sr, nfft, sampleDur, n_mel : nn.Sequential(
   STFT(nfft, int((sampleDur*sr - nfft)/128)),
-  MelFilter(sr, nfft, N_MEL_BANDS, 0, sr//2),
+  MelFilter(sr, nfft, n_mel, sr//nfft, sr//2),
   Log1p(7, trainable=False)
 )
 
@@ -104,16 +112,8 @@ sparrow_decoder = lambda nfeat, shape : nn.Sequential(
   nn.BatchNorm2d(64),
   nn.ReLU(True),
 
-  nn.Upsample(scale_factor=(1,2)),
+  nn.Upsample(scale_factor=2),
   nn.Conv2d(64, 32, (3, 3), bias=False, padding=1),
-  nn.BatchNorm2d(32),
-  nn.ReLU(True),
-  nn.Conv2d(32, 32, (3, 3), bias=False, padding=1),
-  nn.BatchNorm2d(32),
-  nn.ReLU(True),
-
-  nn.Upsample(scale_factor=2 if N_MEL_BANDS == 128 else (1,2)),
-  nn.Conv2d(32, 32, (3, 3), bias=False, padding=1),
   nn.BatchNorm2d(32),
   nn.ReLU(True),
   nn.Conv2d(32, 32, (3, 3), bias=False, padding=1),

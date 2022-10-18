@@ -16,10 +16,10 @@ def create_mel_filterbank(sample_rate, frame_len, num_bands, min_freq, max_freq,
     maximum frequency and are therefore zero.
     """
     # mel-spaced peak frequencies
-    min_mel = 1127 * np.log1p(min_freq / 700.0)
-    max_mel = 1127 * np.log1p(max_freq / 700.0)
+    min_mel = 1127 * np.log1p(min_freq / 7000.0)
+    max_mel = 1127 * np.log1p(max_freq / 7000.0)
     peaks_mel = torch.linspace(min_mel, max_mel, num_bands + 2)
-    peaks_hz = 700 * (torch.expm1(peaks_mel / 1127))
+    peaks_hz = 7000 * (torch.expm1(peaks_mel / 1127))
     peaks_bin = peaks_hz * frame_len / sample_rate
 
     # create filterbank
@@ -47,6 +47,7 @@ def create_mel_filterbank(sample_rate, frame_len, num_bands, min_freq, max_freq,
     return filterbank
 
 
+
 class MelFilter(nn.Module):
     def __init__(self, sample_rate, winsize, num_bands, min_freq, max_freq):
         super(MelFilter, self).__init__()
@@ -61,14 +62,14 @@ class MelFilter(nn.Module):
         x = x.transpose(-1, -2)  # put time last
         return x
 
-    def state_dict(self, destination=None, prefix='', keep_vars=False):
+    def state_dict_(self, destination=None, prefix='', keep_vars=False):
         result = super(MelFilter, self).state_dict(destination, prefix, keep_vars)
         # remove all buffers; we use them as cached constants
         for k in self._buffers:
             del result[prefix + k]
         return result
 
-    def _load_from_state_dict(self, state_dict, prefix, *args, **kwargs):
+    def _load_from_state_dict_(self, state_dict, prefix, *args, **kwargs):
         # ignore stored buffers for backwards compatibility
         for k in self._buffers:
             state_dict.pop(prefix + k, None)
@@ -88,14 +89,14 @@ class STFT(nn.Module):
                              torch.hann_window(winsize, periodic=False))
         self.complex = complex
 
-    def state_dict(self, destination=None, prefix='', keep_vars=False):
+    def state_dict_(self, destination=None, prefix='', keep_vars=False):
         result = super(STFT, self).state_dict(destination, prefix, keep_vars)
         # remove all buffers; we use them as cached constants
         for k in self._buffers:
             del result[prefix + k]
         return result
 
-    def _load_from_state_dict(self, state_dict, prefix, *args, **kwargs):
+    def _load_from_state_dict_(self, state_dict, prefix, *args, **kwargs):
         # ignore stored buffers for backwards compatibility
         for k in self._buffers:
             state_dict.pop(prefix + k, None)
