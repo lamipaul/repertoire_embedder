@@ -1,0 +1,9 @@
+Scripts to train an auto-encoder and cluster animal vocalisation by frequency-contour similarity
+Vocalisation detection needs to be done prior to this process
+
+Scripts need to be called in the following order :
+train_AE.py
+compute_embeddings.py
+sort_cluster.py
+
+use --help to get more information on each scripts' usages
