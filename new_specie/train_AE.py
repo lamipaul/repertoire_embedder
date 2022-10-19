@@ -6,7 +6,8 @@ from tqdm import tqdm
 from torch.utils.tensorboard import SummaryWriter
 import argparse
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description="""This script trains an auto-encoder to compress and depcompress vocalisation spectrograms.\n
+            Reconstruction quality can be monitored via tensorboard ($tensorboard --logdir=runs/ --bind_all)""")
 parser.add_argument("detections", type=str, help=".csv file with detections to be encoded. Columns filename (path of the soundfile) and pos (center of the detection in seconds) are needed")
 parser.add_argument("-audio_folder", type=str, default='./', help="Folder from which to load sound files")
 parser.add_argument("-NFFT", type=int, default=1024, help="FFT size for the spectrogram computation")

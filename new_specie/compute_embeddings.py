@@ -5,7 +5,8 @@ import umap
 from tqdm import tqdm
 import argparse
 
-parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter, description="Compute the AE projection of vocalizations once it was trained.")
+parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter, \
+    description="Compute the auto-encoder embeddings of vocalizations once it was trained with train_AE.py")
 parser.add_argument('modelname', type=str, help='Filename of the AE weights (.stdc)')
 parser.add_argument("detections", type=str, help=".csv file with detections to be encoded. Columns filename (path of the soundfile) and pos (center of the detection in seconds) are needed")
 parser.add_argument("-audio_folder", type=str, default='./', help="Folder from which to load sound files")

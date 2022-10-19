@@ -7,10 +7,10 @@ import hdbscan
 import argparse
 
 parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter, \
-    description="""Interface to visualize projected vocalizations (UMAP reduced AE embeddings), tune HDBSCAN parameters, and browse clusters by clicking on projected points.\n
-    If satisfying parameters are reached, the clusters can be plotted in .png folders by typing y after closing the projection plot.\n
-    For insights on how to tune HDBSCAN parameters, read https://hdbscan.readthedocs.io/en/latest/parameter_selection.html.\n
-    To enable sound playing when browsing points, make sure the sounddevice package is installed.""")
+    description="""Interface to visualize projected vocalizations (UMAP reduced AE embeddings), and tune HDBSCAN parameters.\n
+    This script is to be called after compute_embeddings.py.\n
+    If satisfying HDBCSCAN parameters are reached, vocalisations spectrograms can be plotted (sorted by clusters) by typing \'y\' after closing the projection plot.\n
+    For insights on how to tune HDBSCAN parameters, read https://hdbscan.readthedocs.io/en/latest/parameter_selection.html""")
 parser.add_argument('encodings', type=str, help='.npy file containing umap projections and their associated index in the detection.pkl table (built using compute_embeddings.py)')
 parser.add_argument('detections', type=str, help=".csv file with detections to be encoded. Columns filename (path of the soundfile) and pos (center of the detection in seconds) are needed")
 parser.add_argument('audio_folder', type=str, help='Path to the folder with complete audio files')
