@@ -7,3 +7,5 @@ compute_embeddings.py
 sort_cluster.py
 
 use --help to get more information on each scripts' usages
+
+required packages can be found in the requirements.txt file

@@ -1,0 +1,12 @@
+hdbscan==0.8.28
+matplotlib==3.5.1
+numpy==1.22.3
+pandas==1.4.1
+PySoundFile==0.9.0.post1
+scipy==1.8.0
+soundfile==0.11.0
+torch==1.11.0+cu113
+torchvision==0.12.0+cu113
+tqdm==4.64.0
+umap==0.1.1
+umap_learn==0.5.3
