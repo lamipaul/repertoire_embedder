@@ -137,11 +137,11 @@ sparrow_encoder = lambda nfeat, shape : nn.Sequential(
 
 sparrow_decoder = lambda nfeat, shape : nn.Sequential(
   # nn.Linear(nfeat, nfeat*shape[0]*shape[1]),
-  u.Reshape(nfeat, *shape),
+  u.Reshape(nfeat//(shape[0]*shape[1]), *shape),
   nn.ReLU(True),
 
   nn.Upsample(scale_factor=2),
-  nn.Conv2d(nfeat, 256, (3, 3), bias=False, padding=1),
+  nn.Conv2d(nfeat//(shape[0]*shape[1]), 256, (3, 3), bias=False, padding=1),
   nn.BatchNorm2d(256),
   nn.ReLU(True),
   nn.Conv2d(256, 256, (3, 3), bias=False, padding=1),

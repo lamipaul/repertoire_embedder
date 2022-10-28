@@ -28,14 +28,14 @@ print(f'{len(df)} available vocs')
 
 modelname = f'{args.specie}_{args.bottleneck}_{args.frontend}{args.nMel}_{args.encoder}_{args.nMel}_decod2_BN_nomaxPool.stdc'
 gpu = torch.device(f'cuda:{args.cuda}')
-writer = SummaryWriter(f'runs/{modelname}')
-os.system(f'cp *.py runs/{modelname}')
+writer = SummaryWriter(f'runs2/{modelname}')
+os.system(f'cp *.py runs2/{modelname}')
 vgg16 = models.vgg16
 vgg16.eval().to(gpu)
 meta = models.meta[args.specie]
 
 frontend = models.frontend[args.frontend](meta['sr'], meta['nfft'], meta['sampleDur'], args.nMel)
-encoder = models.__dict__[args.encoder](args.bottleneck, (4, 4) if args.nMel == 128 else (2, 4))
+encoder = models.__dict__[args.encoder](*((args.bottleneck // 16, (4, 4)) if args.nMel == 128 else (args.bottleneck // 8, (2, 4))))
 decoder = models.sparrow_decoder(args.bottleneck, (4, 4) if args.nMel == 128 else (2, 4))
 model = torch.nn.Sequential(frontend, encoder, decoder).to(gpu)
 
@@ -88,9 +88,10 @@ for epoch in range(100_000//len(loader)):
                     encodings.extend(encoding.cpu().detach())
             idxs = np.array(idxs)
             encodings = np.stack(encodings)
-            # print('Computing UMAP...', end='')
+            
+            print('Computing UMAP...', end='')
             X = umap.UMAP(n_jobs=-1).fit_transform(encodings)
-            # print('\rRunning HDBSCAN...', end='')
+            print('\rRunning HDBSCAN...', end='')
             clusters = hdbscan.HDBSCAN(min_cluster_size=len(df)//100, min_samples=5, core_dist_n_jobs=-1, cluster_selection_method='leaf').fit_predict(X)
             mask = ~df.loc[idxs].label.isna()
             clusters, labels = clusters[mask], df.loc[idxs[mask]].label
@@ -100,16 +101,24 @@ for epoch in range(100_000//len(loader)):
             writer.add_scalar('Completeness HDBSCAN', metrics.completeness_score(labels, clusters), step)
             writer.add_scalar('V-Measure HDBSCAN', metrics.v_measure_score(labels, clusters), step)
             
-            # print('\rRunning elbow method for K-Means...', end='')
-            ks = (10*1.3**np.arange(10)).astype(int)
+            print('\rComputing HDBSCAN precision and recall distributions', end='')
+            df.loc[idxs, 'cluster'] = clusters.astype(int)
+            labelled = df[~df.label.isna()]
+            precs, recs = [], []
+            for l, grp in labelled.groupby('label'):
+                best = (grp.groupby('cluster').fn.count() / labelled.groupby('cluster').fn.count()).idxmax()
+                precs.append((grp.cluster==best).sum()/(labelled.cluster==best).sum())
+                recs.append((grp.cluster==best).sum()/len(grp))
+            writer.add_histogram('HDBSCAN Precisions ', np.array(precs), step)
+            writer.add_histogram('HDBSCAN Recalls ', np.array(recs), step)
+            df.drop('cluster', axis=1, inplace=True)
+
+            print('\rRunning elbow method for K-Means...', end='')
+            ks = (5*1.2**np.arange(20)).astype(int)
             distorsions = [cluster.KMeans(n_clusters=k).fit(encodings).inertia_ for k in ks]
-            # print('\rEstimating elbow...', end='')
-            try: 
-                errors = [linregress(ks[:i], distorsions[:i]).stderr + linregress(ks[i+1:], distorsions[i+1:]).stderr for i in range(1, len(ks)-1)]
-            except RuntimeWarning:
-                continue
+            print('\rEstimating elbow...', end='')
+            errors = [linregress(ks[:i], distorsions[:i]).stderr + linregress(ks[i+1:], distorsions[i+1:]).stderr for i in range(2, len(ks)-2)]
             k = ks[np.argmin(errors)]
-            # print('\r', end='')
             writer.add_scalar('Chosen K', k, step)
             clusters = cluster.KMeans(n_clusters=k).fit_predict(encodings)
             writer.add_scalar('Silhouette', metrics.silhouette_score(encodings, clusters), step)
@@ -119,6 +128,18 @@ for epoch in range(100_000//len(loader)):
             writer.add_scalar('Homogeneity K-Means', metrics.homogeneity_score(labels, clusters), step)
             writer.add_scalar('Completeness K-Means', metrics.completeness_score(labels, clusters), step)
             writer.add_scalar('V-Measure K-Means', metrics.v_measure_score(labels, clusters), step)
-            
+
+            print('\rComputing K-Means precision and recall distributions', end='') 
+            df.loc[idxs, 'cluster'] = clusters.astype(int)
+            labelled = df[~df.label.isna()]
+            precs, recs = [], []
+            for l, grp in labelled.groupby('label'):
+                best = (grp.groupby('cluster').fn.count() / labelled.groupby('cluster').fn.count()).idxmax()
+                precs.append((grp.cluster==best).sum()/(labelled.cluster==best).sum())
+                recs.append((grp.cluster==best).sum()/len(grp))
+            writer.add_histogram('K-Means Precisions ', np.array(precs), step)
+            writer.add_histogram('K-Means Recalls ', np.array(recs), step)
+            df.drop('cluster', axis=1, inplace=True)
+            print('\r', end='')
             model.train()
         step += 1
