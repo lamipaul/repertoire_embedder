@@ -93,6 +93,7 @@ for epoch in range(100_000//len(loader)):
             X = umap.UMAP(n_jobs=-1).fit_transform(encodings)
             print('\rRunning HDBSCAN...', end='')
             clusters = hdbscan.HDBSCAN(min_cluster_size=len(df)//100, min_samples=5, core_dist_n_jobs=-1, cluster_selection_method='leaf').fit_predict(X)
+            df.loc[idxs, 'cluster'] = clusters.astype(int)
             mask = ~df.loc[idxs].label.isna()
             clusters, labels = clusters[mask], df.loc[idxs[mask]].label
             writer.add_scalar('NMI HDBSCAN', metrics.normalized_mutual_info_score(labels, clusters), step)
@@ -102,7 +103,6 @@ for epoch in range(100_000//len(loader)):
             writer.add_scalar('V-Measure HDBSCAN', metrics.v_measure_score(labels, clusters), step)
             
             print('\rComputing HDBSCAN precision and recall distributions', end='')
-            df.loc[idxs, 'cluster'] = clusters.astype(int)
             labelled = df[~df.label.isna()]
             precs, recs = [], []
             for l, grp in labelled.groupby('label'):
@@ -121,6 +121,8 @@ for epoch in range(100_000//len(loader)):
             k = ks[np.argmin(errors)]
             writer.add_scalar('Chosen K', k, step)
             clusters = cluster.KMeans(n_clusters=k).fit_predict(encodings)
+            df.loc[idxs, 'cluster'] = clusters.astype(int)
+
             writer.add_scalar('Silhouette', metrics.silhouette_score(encodings, clusters), step)
             clusters, labels = clusters[mask], df.loc[idxs[mask]].label
             writer.add_scalar('NMI K-Means', metrics.normalized_mutual_info_score(labels, clusters), step)
@@ -130,7 +132,6 @@ for epoch in range(100_000//len(loader)):
             writer.add_scalar('V-Measure K-Means', metrics.v_measure_score(labels, clusters), step)
 
             print('\rComputing K-Means precision and recall distributions', end='') 
-            df.loc[idxs, 'cluster'] = clusters.astype(int)
             labelled = df[~df.label.isna()]
             precs, recs = [], []
             for l, grp in labelled.groupby('label'):
