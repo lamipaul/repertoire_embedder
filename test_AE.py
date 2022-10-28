@@ -30,9 +30,9 @@ if os.path.isfile(f'{args.specie}/encodings_{modelname[:-4]}npy'):
 else:
     gpu = torch.device('cuda')
     frontend = models.frontend[args.frontend](meta['sr'], meta['nfft'], meta['sampleDur'], args.nMel)
-    encoder = models.__dict__[args.encoder](args.bottleneck)
-    decoder = models.sparrow_decoder_old(args.bottleneck, (4, 4) if args.nMel == 128 else (2, 4))
-#    decoder = models.sparrow_decoder(args.bottleneck, (2, 2) if args.nMel == 128 else (1, 2))
+    encoder = models.__dict__[args.encoder](args.bottleneck, (4, 4) if args.nMel == 128 else (2, 4))
+#    decoder = models.sparrow_decoder_old(args.bottleneck, (4, 4) if args.nMel == 128 else (2, 4))
+    decoder = models.sparrow_decoder(args.bottleneck, (4, 4) if args.nMel == 128 else (2, 4))
     model = torch.nn.Sequential(frontend, encoder, decoder).to(gpu)
     model.load_state_dict(torch.load(f'{args.specie}/{modelname}'))
     model.eval()

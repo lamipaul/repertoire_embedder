@@ -21,18 +21,14 @@ class Dataset(data.Dataset):
 
     def __getitem__(self, idx):
         row = self.df.iloc[idx]
-        # try:
         info = sf.info(self.audiopath+row.fn)
         dur, fs = info.duration, info.samplerate
         start = int(np.clip(row.pos - self.sampleDur/2, 0, max(0, dur - self.sampleDur)) * fs)
         sig, fs = sf.read(self.audiopath+row.fn, start=start, stop=start + int(self.sampleDur*fs))
-        # except:
-        #     print(f'failed with {row.name} {row.fn}')
-        #     return None
         if sig.ndim == 2:
             sig = sig[:,0]
         if len(sig) < self.sampleDur * fs:
-            sig = np.pad(sig, int(self.sampleDur * fs - len(sig))//2+1, mode='reflect')[:int(self.sampleDur * fs)]
+            sig = np.concatenate([sig, np.zeros(int(self.sampleDur * fs) - len(sig))])
         if fs != self.sr:
             sig = resample(sig, int(len(sig)/fs*self.sr))
         if np.std(sig) == 0:
