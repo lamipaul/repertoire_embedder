@@ -1,0 +1,454 @@
+fn,label,dur,fs,label_prefilter,pos
+Audio S081_begging scream gradation.wav,begging scream gradation,1.2476145833333334,96000,begging scream gradation,0.6238072916666667
+Audio S113_close call.wav,close call,0.3934166666666667,96000,close call,0.19670833333333335
+Audio S074_begging scream.wav,begging scream,0.67990625,96000,begging scream,0.339953125
+Audio S447_Distress call 2.wav,,1.10259375,96000,Distress call 2,0.551296875
+Audio S387_wavering scream.wav,wavering scream,0.9702291666666667,96000,wavering scream,0.48511458333333335
+Audio S145_contact call.wav,contact call,0.4956041666666667,96000,contact call,0.24780208333333334
+Audio S242_hum.wav,hum,0.57059375,96000,hum,0.285296875
+Audio S172_growl.wav,growl,0.6535729166666666,96000,growl,0.3267864583333333
+Audio S086_begging scream gradation.wav,begging scream gradation,0.9018333333333334,96000,begging scream gradation,0.4509166666666667
+Audio S066_begging scream.wav,begging scream,1.5503541666666667,96000,begging scream,0.7751770833333333
+Audio S025_begging call.wav,begging call,0.4698645833333333,96000,begging call,0.23493229166666665
+Audio S365_suckling call.wav,suckling call,2.4001875,96000,suckling call,1.20009375
+Audio S423_whistle.wav,whistle,0.40960416666666666,96000,whistle,0.20480208333333333
+Audio S238_hum.wav,hum,0.7195416666666666,48000,hum,0.3597708333333333
+Audio S392_whine.wav,whine,0.4116458333333333,96000,whine,0.20582291666666666
+Audio S030_begging call.wav,begging call,0.5053020833333334,96000,begging call,0.2526510416666667
+Audio S211_hah.wav,hah,0.42984375,96000,hah,0.214921875
+Audio S013_bark.wav,bark,0.5596666666666666,96000,bark,0.2798333333333333
+Audio S055_begging scream.wav,begging scream,1.6793229166666668,96000,begging scream,0.8396614583333334
+Audio S217_hah.wav,hah,0.3693125,96000,hah,0.18465625
+Audio S122_contact call.wav,contact call,0.58525,48000,contact call,0.292625
+Audio S419_whistle.wav,whistle,0.399625,96000,whistle,0.1998125
+Audio S021_bark.wav,bark,0.35902083333333334,96000,bark,0.17951041666666667
+Audio S385_wavering scream.wav,wavering scream,1.64665625,96000,wavering scream,0.823328125
+Audio S347_snort.wav,snort,0.28758333333333336,48000,snort,0.14379166666666668
+Audio S403_whine.wav,whine,0.7729479166666666,96000,whine,0.3864739583333333
+Audio S330_snort.wav,snort,0.2995625,96000,snort,0.14978125
+Audio S027_begging call.wav,begging call,0.5098854166666666,96000,begging call,0.2549427083333333
+Audio S402_whine.wav,whine,1.2895729166666667,96000,whine,0.6447864583333334
+Audio S355_snort.wav,snort,0.5262916666666667,96000,snort,0.26314583333333336
+Audio S156_contact call gradation.wav,contact call gradation,0.5388645833333333,96000,contact call gradation,0.26943229166666666
+Audio S137_contact call.wav,contact call,0.4345104166666667,96000,contact call,0.21725520833333334
+Audio S095_begging scream gradation.wav,begging scream gradation,1.1994479166666667,96000,begging scream gradation,0.5997239583333334
+Audio S260_hum gradation.wav,hum gradation,0.7240729166666666,96000,hum gradation,0.3620364583333333
+Audio S309_Ascending scream.wav,Ascending scream,0.82296875,96000,Ascending scream,0.411484375
+Audio S092_begging scream gradation.wav,begging scream gradation,0.8680520833333333,96000,begging scream gradation,0.43402604166666664
+Audio S297_isolation call.wav,isolation call,1.2805833333333334,96000,isolation call,0.6402916666666667
+Audio S213_hah.wav,hah,0.32165625,96000,hah,0.160828125
+Audio S396_whine.wav,whine,1.0791666666666666,48000,whine,0.5395833333333333
+Audio S304_Ascending scream.wav,Ascending scream,0.770875,96000,Ascending scream,0.3854375
+Audio S073_begging scream.wav,begging scream,0.7643125,96000,begging scream,0.38215625
+Audio S272_hum gradation.wav,hum gradation,2.55784375,96000,hum gradation,1.278921875
+Audio S369_suckling call.wav,suckling call,0.8443229166666667,96000,suckling call,0.42216145833333335
+Audio S079_begging scream gradation.wav,begging scream gradation,0.821875,96000,begging scream gradation,0.4109375
+Audio S198_growl.wav,growl,1.8156875,96000,growl,0.90784375
+Audio S018_bark.wav,bark,0.5190729166666667,96000,bark,0.25953645833333333
+Audio S108_close call.wav,close call,0.4617395833333333,96000,close call,0.23086979166666666
+Audio S443_begging call like.wav,,0.7289791666666666,96000,begging call like,0.3644895833333333
+Audio S415_whistle.wav,whistle,0.44,96000,whistle,0.22
+Audio S263_hum gradation.wav,hum gradation,0.6933854166666666,96000,hum gradation,0.3466927083333333
+Audio S301_isolation call.wav,isolation call,1.13509375,96000,isolation call,0.567546875
+Audio S308_Ascending scream.wav,Ascending scream,0.7906770833333333,96000,Ascending scream,0.39533854166666665
+Audio S226_hum.wav,hum,0.45579166666666665,96000,hum,0.22789583333333333
+Audio S168_contact call gradation.wav,contact call gradation,0.3630625,96000,contact call gradation,0.18153125
+Audio S290_isolation call.wav,isolation call,1.3509375,96000,isolation call,0.67546875
+Audio S078_begging scream gradation.wav,begging scream gradation,0.6637708333333333,96000,begging scream gradation,0.33188541666666665
+Audio S390_wavering scream.wav,wavering scream,1.1264583333333333,96000,wavering scream,0.5632291666666667
+Audio S424_whistle.wav,whistle,0.4443958333333333,96000,whistle,0.22219791666666666
+Audio S064_begging scream.wav,begging scream,1.2403333333333333,96000,begging scream,0.6201666666666666
+Audio S300_isolation call.wav,isolation call,0.8854791666666667,96000,isolation call,0.44273958333333335
+Audio S028_begging call.wav,begging call,0.5316979166666667,96000,begging call,0.26584895833333333
+Audio S216_hah.wav,hah,0.3702083333333333,96000,hah,0.18510416666666665
+Audio S303_Ascending scream.wav,Ascending scream,0.780125,96000,Ascending scream,0.3900625
+Audio S105_close call.wav,close call,0.7376666666666667,96000,close call,0.36883333333333335
+Audio S196_growl.wav,growl,1.3986666666666667,48000,growl,0.6993333333333334
+Audio S254_hum gradation.wav,hum gradation,1.4422916666666667,96000,hum gradation,0.7211458333333334
+Audio S386_wavering scream.wav,wavering scream,1.0253020833333333,96000,wavering scream,0.5126510416666666
+Audio S160_contact call gradation.wav,contact call gradation,0.43028125,96000,contact call gradation,0.215140625
+Audio S429_whistle double.wav,whistle double,0.47017708333333336,96000,whistle double,0.23508854166666668
+Audio S265_hum gradation.wav,hum gradation,0.6990625,96000,hum gradation,0.34953125
+Audio S296_isolation call.wav,isolation call,1.3219791666666667,96000,isolation call,0.6609895833333334
+Audio S327_snort.wav,snort,0.37923958333333335,96000,snort,0.18961979166666668
+Audio S267_hum gradation.wav,hum gradation,1.1939375,48000,hum gradation,0.59696875
+Audio S328_snort.wav,snort,0.3749375,96000,snort,0.18746875
+Audio S356_snort.wav,snort,0.3899166666666667,96000,snort,0.19495833333333334
+Audio S163_contact call gradation.wav,contact call gradation,0.36826041666666665,96000,contact call gradation,0.18413020833333332
+Audio S038_begging call.wav,begging call,0.5305208333333333,96000,begging call,0.26526041666666667
+Audio S033_begging call.wav,begging call,0.39958333333333335,96000,begging call,0.19979166666666667
+Audio S399_whine.wav,whine,1.1997916666666666,96000,whine,0.5998958333333333
+Audio S093_begging scream gradation.wav,begging scream gradation,0.8614791666666667,96000,begging scream gradation,0.43073958333333334
+Audio S382_wavering scream.wav,wavering scream,0.92925,96000,wavering scream,0.464625
+Audio S057_begging scream.wav,begging scream,2.070427083333333,96000,begging scream,1.0352135416666666
+Audio S417_whistle.wav,whistle,0.3448125,96000,whistle,0.17240625
+Audio S285_hum short.wav,,0.4990104166666667,96000,hum short,0.24950520833333334
+Audio S395_whine.wav,whine,0.48878125,96000,whine,0.244390625
+Audio S277_hum short.wav,,0.6177604166666667,96000,hum short,0.30888020833333335
+Audio S100_begging scream gradation.wav,begging scream gradation,0.8344479166666666,96000,begging scream gradation,0.4172239583333333
+Audio S452_whistle.wav,whistle,0.55984375,96000,whistle,0.279921875
+Audio S430_whistle double.wav,whistle double,0.5591041666666666,96000,whistle double,0.2795520833333333
+Audio S022_begging call.wav,begging call,0.6199895833333333,96000,begging call,0.30999479166666666
+Audio S152_contact call gradation.wav,contact call gradation,0.45279166666666665,96000,contact call gradation,0.22639583333333332
+Audio S378_underwater call.wav,,1.0503125,48000,underwater call,0.52515625
+Audio S286_isolation call.wav,isolation call,1.54284375,96000,isolation call,0.771421875
+Audio S239_hum.wav,hum,0.8638541666666667,96000,hum,0.43192708333333335
+Audio S098_begging scream gradation.wav,begging scream gradation,0.7302083333333333,96000,begging scream gradation,0.3651041666666667
+Audio S273_hum gradation.wav,hum gradation,2.26271875,96000,hum gradation,1.131359375
+Audio S115_contact call.wav,contact call,0.7539375,96000,contact call,0.37696875
+Audio S104_begging scream gradation.wav,begging scream gradation,0.6097916666666666,96000,begging scream gradation,0.3048958333333333
+Audio S374_underwater call.wav,,1.1989791666666667,48000,underwater call,0.5994895833333334
+Audio S157_contact call gradation.wav,contact call gradation,0.5337604166666666,96000,contact call gradation,0.2668802083333333
+Audio S299_isolation call.wav,isolation call,1.2275,96000,isolation call,0.61375
+Audio S130_contact call.wav,contact call,0.6077395833333333,96000,contact call,0.30386979166666667
+Audio S364_suckling call.wav,suckling call,4.049302083333333,96000,suckling call,2.0246510416666665
+Audio S162_contact call gradation.wav,contact call gradation,0.3046041666666667,96000,contact call gradation,0.15230208333333334
+Audio S179_growl.wav,growl,2.0990520833333335,96000,growl,1.0495260416666667
+Audio S044_begging scream.wav,begging scream,0.7140416666666667,96000,begging scream,0.35702083333333334
+Audio S063_begging scream.wav,begging scream,1.44946875,96000,begging scream,0.724734375
+Audio S435_whistle double.wav,whistle double,0.6291666666666667,96000,whistle double,0.3145833333333333
+Audio S128_contact call.wav,contact call,0.5503958333333333,96000,contact call,0.27519791666666665
+Audio S048_begging scream.wav,begging scream,1.04796875,96000,begging scream,0.523984375
+Audio S225_hum.wav,hum,1.2670833333333333,96000,hum,0.6335416666666667
+Audio S155_contact call gradation.wav,contact call gradation,0.8763854166666667,96000,contact call gradation,0.43819270833333335
+Audio S005_bark.wav,bark,0.2845416666666667,96000,bark,0.14227083333333335
+Audio S269_hum gradation.wav,hum gradation,1.6388958333333334,96000,hum gradation,0.8194479166666667
+Audio S176_growl.wav,growl,2.6724791666666667,96000,growl,1.3362395833333334
+Audio S338_snort.wav,snort,0.34030208333333334,96000,snort,0.17015104166666667
+Audio S221_hum.wav,hum,0.89909375,96000,hum,0.449546875
+Audio S161_contact call gradation.wav,contact call gradation,0.47389583333333335,96000,contact call gradation,0.23694791666666667
+Audio S314_Ascending scream.wav,Ascending scream,0.5953125,96000,Ascending scream,0.29765625
+Audio S020_bark.wav,bark,0.44990625,96000,bark,0.224953125
+Audio S363_suckling call.wav,suckling call,0.7172291666666667,96000,suckling call,0.35861458333333335
+Audio S201_hah.wav,hah,0.47628125,96000,hah,0.238140625
+Audio S376_underwater call.wav,,1.4256875,48000,underwater call,0.71284375
+Audio S149_contact call gradation.wav,contact call gradation,0.5289375,96000,contact call gradation,0.26446875
+Audio S271_hum gradation.wav,hum gradation,1.5405,48000,hum gradation,0.77025
+Audio S371_underwater call.wav,,0.71634375,96000,underwater call,0.358171875
+Audio S258_hum gradation.wav,hum gradation,1.4126354166666666,96000,hum gradation,0.7063177083333333
+Audio S200_growl.wav,growl,0.84115625,96000,growl,0.420578125
+Audio S195_growl.wav,growl,1.1718958333333334,96000,growl,0.5859479166666667
+Audio S214_hah.wav,hah,0.4772604166666667,96000,hah,0.23863020833333334
+Audio S453_low whistle.wav,,0.5797708333333333,96000,low whistle,0.2898854166666667
+Audio S246_hum.wav,hum,1.11953125,96000,hum,0.559765625
+Audio S446_Distress call 1.wav,,0.81990625,96000,Distress call 1,0.409953125
+Audio S264_hum gradation.wav,hum gradation,0.60753125,96000,hum gradation,0.303765625
+Audio S245_hum.wav,hum,0.9070833333333334,96000,hum,0.4535416666666667
+Audio S262_hum gradation.wav,hum gradation,1.56315625,96000,hum gradation,0.781578125
+Audio S049_begging scream.wav,begging scream,1.11934375,96000,begging scream,0.559671875
+Audio S439_whistle double.wav,whistle double,0.5083854166666667,96000,whistle double,0.25419270833333335
+Audio S047_begging scream.wav,begging scream,1.6799791666666666,96000,begging scream,0.8399895833333333
+Audio S278_hum short.wav,,0.5841979166666667,96000,hum short,0.2920989583333333
+Audio S270_hum gradation.wav,hum gradation,1.7332916666666667,48000,hum gradation,0.8666458333333333
+Audio S251_hum gradation.wav,hum gradation,2.1746041666666667,96000,hum gradation,1.0873020833333333
+Audio S124_contact call.wav,contact call,0.4964791666666667,96000,contact call,0.24823958333333335
+Audio S076_begging scream gradation.wav,begging scream gradation,0.93015625,96000,begging scream gradation,0.465078125
+Audio S276_hum gradation.wav,hum gradation,0.8059270833333333,96000,hum gradation,0.40296354166666665
+Audio S131_contact call.wav,contact call,0.6023854166666667,96000,contact call,0.30119270833333334
+Audio S023_begging call.wav,begging call,0.9171666666666667,96000,begging call,0.45858333333333334
+Audio S427_whistle.wav,whistle,0.3597916666666667,96000,whistle,0.17989583333333334
+Audio S110_close call.wav,close call,0.4495208333333333,96000,close call,0.22476041666666666
+Audio S431_whistle double.wav,whistle double,1.0809895833333334,96000,whistle double,0.5404947916666667
+Audio S185_growl.wav,growl,1.8392604166666666,96000,growl,0.9196302083333333
+Audio S091_begging scream gradation.wav,begging scream gradation,0.9083541666666667,96000,begging scream gradation,0.45417708333333334
+Audio S170_contact call gradation.wav,contact call gradation,0.3389375,96000,contact call gradation,0.16946875
+Audio S052_begging scream.wav,begging scream,0.67940625,96000,begging scream,0.339703125
+Audio S075_begging scream gradation.wav,begging scream gradation,0.7292708333333333,96000,begging scream gradation,0.36463541666666666
+Audio S071_begging scream.wav,begging scream,0.8291875,96000,begging scream,0.41459375
+Audio S143_contact call.wav,contact call,0.3897395833333333,96000,contact call,0.19486979166666665
+Audio S181_growl.wav,growl,1.0313229166666666,96000,growl,0.5156614583333333
+Audio S204_hah.wav,hah,0.37397916666666664,96000,hah,0.18698958333333332
+Audio S099_begging scream gradation.wav,begging scream gradation,0.8994166666666666,96000,begging scream gradation,0.4497083333333333
+Audio S362_suckling call.wav,suckling call,0.47628125,96000,suckling call,0.238140625
+Audio S377_underwater call.wav,,0.7306666666666667,48000,underwater call,0.36533333333333334
+Audio S114_close call.wav,close call,0.40625,96000,close call,0.203125
+Audio S229_hum.wav,hum,0.42509375,96000,hum,0.212546875
+Audio S035_begging call.wav,begging call,0.4399895833333333,96000,begging call,0.21999479166666666
+Audio S420_whistle.wav,whistle,0.37166666666666665,96000,whistle,0.18583333333333332
+Audio S187_growl.wav,growl,1.8121041666666666,96000,growl,0.9060520833333333
+Audio S208_hah.wav,hah,0.47403125,96000,hah,0.237015625
+Audio S449_hum gradation like.wav,,0.7703125,96000,hum gradation like,0.38515625
+Audio S444_contact call like.wav,,1.2985104166666666,96000,contact call like,0.6492552083333333
+Audio S224_hum.wav,hum,0.8786666666666667,96000,hum,0.43933333333333335
+Audio S331_snort.wav,snort,0.33979166666666666,96000,snort,0.16989583333333333
+Audio S220_hum.wav,hum,0.5284895833333333,96000,hum,0.26424479166666665
+Audio S019_bark.wav,bark,0.4633541666666667,96000,bark,0.23167708333333334
+Audio S341_snort.wav,snort,0.3759166666666667,96000,snort,0.18795833333333334
+Audio S408_whine.wav,whine,1.5504791666666666,96000,whine,0.7752395833333333
+Audio S069_begging scream.wav,begging scream,0.9978125,96000,begging scream,0.49890625
+Audio S227_hum.wav,hum,0.6324479166666667,96000,hum,0.31622395833333333
+Audio S068_begging scream.wav,begging scream,0.9822708333333333,96000,begging scream,0.49113541666666666
+Audio S174_growl.wav,growl,1.3874791666666666,96000,growl,0.6937395833333333
+Audio S039_begging call.wav,begging call,0.5996770833333334,96000,begging call,0.2998385416666667
+Audio S058_begging scream.wav,begging scream,1.5971770833333334,96000,begging scream,0.7985885416666667
+Audio S250_hum gradation.wav,hum gradation,1.0218958333333332,96000,hum gradation,0.5109479166666666
+Audio S070_begging scream.wav,begging scream,0.7390104166666667,96000,begging scream,0.36950520833333333
+Audio S367_suckling call.wav,suckling call,0.7672395833333333,96000,suckling call,0.38361979166666665
+Audio S136_contact call.wav,contact call,0.5061145833333334,96000,contact call,0.2530572916666667
+Audio S109_close call.wav,close call,0.44945833333333335,96000,close call,0.22472916666666667
+Audio S182_growl.wav,growl,1.1105416666666668,96000,growl,0.5552708333333334
+Audio S414_whistle.wav,whistle,0.37975,96000,whistle,0.189875
+Audio S165_contact call gradation.wav,contact call gradation,0.35475,96000,contact call gradation,0.177375
+Audio S334_snort.wav,snort,0.4069375,48000,snort,0.20346875
+Audio S007_bark.wav,bark,0.359125,96000,bark,0.1795625
+Audio S140_contact call.wav,contact call,0.5404166666666667,96000,contact call,0.27020833333333333
+Audio S422_whistle.wav,whistle,0.60175,96000,whistle,0.300875
+Audio S138_contact call.wav,contact call,0.5100104166666667,96000,contact call,0.25500520833333334
+Audio S274_hum gradation.wav,hum gradation,1.2308958333333333,96000,hum gradation,0.6154479166666667
+Audio S438_whistle double.wav,whistle double,0.654,96000,whistle double,0.327
+Audio S041_begging call.wav,begging call,0.48563541666666665,96000,begging call,0.24281770833333333
+Audio S040_begging call.wav,begging call,0.5944895833333333,96000,begging call,0.2972447916666667
+Audio S186_growl.wav,growl,0.9104895833333333,96000,growl,0.45524479166666665
+Audio S433_whistle double.wav,whistle double,0.9993541666666667,96000,whistle double,0.4996770833333333
+Audio S106_close call.wav,close call,0.3995,96000,close call,0.19975
+Audio S428_whistle.wav,whistle,0.42428125,96000,whistle,0.212140625
+Audio S189_growl.wav,growl,1.6926145833333333,96000,growl,0.8463072916666666
+Audio S413_whistle.wav,whistle,0.4607604166666667,96000,whistle,0.23038020833333334
+Audio S219_hum.wav,hum,0.6797395833333333,96000,hum,0.33986979166666664
+Audio S117_contact call.wav,contact call,0.5614375,96000,contact call,0.28071875
+Audio S037_begging call.wav,begging call,0.5460833333333334,96000,begging call,0.2730416666666667
+Audio S017_bark.wav,bark,0.5095625,96000,bark,0.25478125
+Audio S085_begging scream gradation.wav,begging scream gradation,0.7379895833333333,96000,begging scream gradation,0.36899479166666665
+Audio S437_whistle double.wav,whistle double,0.7593333333333333,96000,whistle double,0.37966666666666665
+Audio S406_whine.wav,whine,1.449625,96000,whine,0.7248125
+Audio S026_begging call.wav,begging call,0.4643541666666667,96000,begging call,0.23217708333333334
+Audio S008_bark.wav,bark,0.32177083333333334,96000,bark,0.16088541666666667
+Audio S379_underwater call.wav,,1.8987083333333334,48000,underwater call,0.9493541666666667
+Audio S282_hum short.wav,,0.911625,96000,hum short,0.4558125
+Audio S061_begging scream.wav,begging scream,1.5127916666666668,96000,begging scream,0.7563958333333334
+Audio S148_contact call gradation.wav,contact call gradation,0.4106666666666667,96000,contact call gradation,0.20533333333333334
+Audio S177_growl.wav,growl,1.7182708333333334,96000,growl,0.8591354166666667
+Audio S059_begging scream.wav,begging scream,1.1197916666666667,96000,begging scream,0.5598958333333334
+Audio S210_hah.wav,hah,0.41459375,96000,hah,0.207296875
+Audio S014_bark.wav,bark,0.64034375,96000,bark,0.320171875
+Audio S375_underwater call.wav,,0.6740833333333334,48000,underwater call,0.3370416666666667
+Audio S067_begging scream.wav,begging scream,0.8484270833333334,96000,begging scream,0.4242135416666667
+Audio S345_snort.wav,snort,0.59884375,96000,snort,0.299421875
+Audio S320_Ascending scream.wav,Ascending scream,0.89853125,96000,Ascending scream,0.449265625
+Audio S281_hum short.wav,,0.59221875,96000,hum short,0.296109375
+Audio S310_Ascending scream.wav,Ascending scream,0.7301458333333334,96000,Ascending scream,0.3650729166666667
+Audio S080_begging scream gradation.wav,begging scream gradation,1.2221666666666666,96000,begging scream gradation,0.6110833333333333
+Audio S266_hum gradation.wav,hum gradation,1.3522708333333333,48000,hum gradation,0.6761354166666667
+Audio S315_Ascending scream.wav,Ascending scream,0.72634375,96000,Ascending scream,0.363171875
+Audio S011_bark.wav,bark,0.39921875,96000,bark,0.199609375
+Audio S169_contact call gradation.wav,contact call gradation,0.42532291666666666,96000,contact call gradation,0.21266145833333333
+Audio S094_begging scream gradation.wav,begging scream gradation,0.9292604166666667,96000,begging scream gradation,0.46463020833333335
+Audio S046_begging scream.wav,begging scream,1.69921875,96000,begging scream,0.849609375
+Audio S253_hum gradation.wav,hum gradation,1.771,48000,hum gradation,0.8855
+Audio S404_whine.wav,whine,1.0105208333333333,96000,whine,0.5052604166666667
+Audio S416_whistle.wav,whistle,0.3948229166666667,96000,whistle,0.19741145833333335
+Audio S003_bark.wav,bark,0.35079166666666667,96000,bark,0.17539583333333333
+Audio S359_suckling call.wav,suckling call,1.3748333333333334,96000,suckling call,0.6874166666666667
+Audio S199_growl.wav,growl,3.7751354166666666,96000,growl,1.8875677083333333
+Audio S412_whistle.wav,whistle,0.5697083333333334,96000,whistle,0.2848541666666667
+Audio S015_bark.wav,bark,0.46990625,96000,bark,0.234953125
+Audio S441_whistle double.wav,whistle double,0.60053125,96000,whistle double,0.300265625
+Audio S451_high whistle.wav,,0.5126458333333334,96000,high whistle,0.2563229166666667
+Audio S175_growl.wav,growl,1.13896875,96000,growl,0.569484375
+Audio S001_bark.wav,bark,0.36935416666666665,96000,bark,0.18467708333333333
+Audio S381_wavering scream.wav,wavering scream,3.000208333333333,96000,wavering scream,1.5001041666666666
+Audio S450_suckling call.wav,suckling call,1.0987916666666666,96000,suckling call,0.5493958333333333
+Audio S360_suckling call.wav,suckling call,0.5353854166666666,96000,suckling call,0.2676927083333333
+Audio S089_begging scream gradation.wav,begging scream gradation,0.74825,96000,begging scream gradation,0.374125
+Audio S010_bark.wav,bark,0.4928854166666667,96000,bark,0.24644270833333334
+Audio S410_whine.wav,whine,1.080125,96000,whine,0.5400625
+Audio S236_hum.wav,hum,1.1048125,96000,hum,0.55240625
+Audio S322_Ascending scream.wav,Ascending scream,0.6197083333333333,96000,Ascending scream,0.30985416666666665
+Audio S240_hum.wav,hum,0.66040625,96000,hum,0.330203125
+Audio S293_isolation call.wav,isolation call,1.1082708333333333,96000,isolation call,0.5541354166666667
+Audio S332_snort.wav,snort,0.34933333333333333,96000,snort,0.17466666666666666
+Audio S280_hum short.wav,,0.42053125,96000,hum short,0.210265625
+Audio S002_bark.wav,bark,0.4190729166666667,96000,bark,0.20953645833333334
+Audio S316_Ascending scream.wav,Ascending scream,0.7095520833333333,96000,Ascending scream,0.35477604166666665
+Audio S440_whistle double.wav,whistle double,0.460375,96000,whistle double,0.2301875
+Audio S348_snort.wav,snort,0.35975,48000,snort,0.179875
+Audio S357_snort.wav,snort,0.39670833333333333,96000,snort,0.19835416666666666
+Audio S119_contact call.wav,contact call,0.6730520833333333,96000,contact call,0.33652604166666666
+Audio S329_snort.wav,snort,0.36454166666666665,96000,snort,0.18227083333333333
+Audio S398_whine.wav,whine,0.6513229166666666,96000,whine,0.3256614583333333
+Audio S318_Ascending scream.wav,Ascending scream,0.8588645833333334,96000,Ascending scream,0.4294322916666667
+Audio S031_begging call.wav,begging call,0.46917708333333336,96000,begging call,0.23458854166666668
+Audio S171_contact call gradation.wav,contact call gradation,0.37405208333333334,96000,contact call gradation,0.18702604166666667
+Audio S426_whistle.wav,whistle,0.36941666666666667,96000,whistle,0.18470833333333334
+Audio S340_snort.wav,snort,0.3265104166666667,96000,snort,0.16325520833333335
+Audio S111_close call.wav,close call,0.449125,96000,close call,0.2245625
+Audio S237_hum.wav,hum,0.9070833333333334,96000,hum,0.4535416666666667
+Audio S305_Ascending scream.wav,Ascending scream,2.4930104166666665,96000,Ascending scream,1.2465052083333332
+Audio S150_contact call gradation.wav,contact call gradation,0.50015625,96000,contact call gradation,0.250078125
+Audio S230_hum.wav,hum,0.5672083333333333,96000,hum,0.28360416666666666
+Audio S421_whistle.wav,whistle,0.4493020833333333,96000,whistle,0.22465104166666666
+Audio S050_begging scream.wav,begging scream,1.55409375,96000,begging scream,0.777046875
+Audio S361_suckling call.wav,suckling call,0.36033333333333334,96000,suckling call,0.18016666666666667
+Audio S261_hum gradation.wav,hum gradation,1.1759166666666667,96000,hum gradation,0.5879583333333334
+Audio S153_contact call gradation.wav,contact call gradation,0.7388541666666667,96000,contact call gradation,0.36942708333333335
+Audio S339_snort.wav,snort,0.33782291666666664,96000,snort,0.16891145833333332
+Audio S190_growl.wav,growl,2.10353125,96000,growl,1.051765625
+Audio S164_contact call gradation.wav,contact call gradation,0.33770833333333333,96000,contact call gradation,0.16885416666666667
+Audio S141_contact call.wav,contact call,0.6104375,96000,contact call,0.30521875
+Audio S134_contact call.wav,contact call,0.6957916666666667,96000,contact call,0.34789583333333335
+Audio S336_snort.wav,snort,0.4546875,96000,snort,0.22734375
+Audio S006_bark.wav,bark,0.34952083333333334,96000,bark,0.17476041666666667
+Audio S448_hum like.wav,,0.9596770833333333,96000,hum like,0.4798385416666667
+Audio S096_begging scream gradation.wav,begging scream gradation,0.950125,96000,begging scream gradation,0.4750625
+Audio S215_hah.wav,hah,0.47511458333333334,96000,hah,0.23755729166666667
+Audio S232_hum.wav,hum,0.452625,96000,hum,0.2263125
+Audio S351_snort.wav,snort,0.49827083333333333,48000,snort,0.24913541666666666
+Audio S029_begging call.wav,begging call,0.5169895833333333,96000,begging call,0.25849479166666667
+Audio S120_contact call.wav,contact call,0.6379479166666666,96000,contact call,0.3189739583333333
+Audio S389_wavering scream.wav,wavering scream,1.6347604166666667,96000,wavering scream,0.8173802083333334
+Audio S024_begging call.wav,begging call,0.5413854166666666,96000,begging call,0.2706927083333333
+Audio S212_hah.wav,hah,0.32847916666666666,96000,hah,0.16423958333333333
+Audio S125_contact call.wav,contact call,0.5496041666666667,96000,contact call,0.27480208333333334
+Audio S101_begging scream gradation.wav,begging scream gradation,0.59965625,96000,begging scream gradation,0.299828125
+Audio S432_whistle double.wav,whistle double,0.7732083333333334,96000,whistle double,0.3866041666666667
+Audio S294_isolation call.wav,isolation call,1.0647604166666667,96000,isolation call,0.5323802083333333
+Audio S400_whine.wav,whine,1.0684895833333334,96000,whine,0.5342447916666667
+Audio S127_contact call.wav,contact call,0.5798958333333334,96000,contact call,0.2899479166666667
+Audio S372_underwater call.wav,,0.7002083333333333,48000,underwater call,0.35010416666666666
+Audio S132_contact call.wav,contact call,0.5919583333333334,96000,contact call,0.2959791666666667
+Audio S009_bark.wav,bark,0.44978125,96000,bark,0.224890625
+Audio S279_hum short.wav,,0.40011458333333333,96000,hum short,0.20005729166666666
+Audio S418_whistle.wav,whistle,0.40045833333333336,96000,whistle,0.20022916666666668
+Audio S343_snort.wav,snort,0.3392395833333333,96000,snort,0.16961979166666666
+Audio S354_snort.wav,snort,0.4360625,48000,snort,0.21803125
+Audio S192_growl.wav,growl,1.4431041666666666,48000,growl,0.7215520833333333
+Audio S173_growl.wav,growl,0.9602916666666667,96000,growl,0.4801458333333333
+Audio S166_contact call gradation.wav,contact call gradation,0.3377395833333333,96000,contact call gradation,0.16886979166666666
+Audio S405_whine.wav,whine,0.61025,96000,whine,0.305125
+Audio S032_begging call.wav,begging call,0.4554166666666667,96000,begging call,0.22770833333333335
+Audio S116_contact call.wav,contact call,0.5359895833333334,96000,contact call,0.2679947916666667
+Audio S380_wavering scream.wav,wavering scream,2.298208333333333,96000,wavering scream,1.1491041666666666
+Audio S326_Ascending scream.wav,Ascending scream,0.9002604166666667,96000,Ascending scream,0.45013020833333334
+Audio S205_hah.wav,hah,0.369,96000,hah,0.1845
+Audio S209_hah.wav,hah,0.41148958333333335,96000,hah,0.20574479166666668
+Audio S397_whine.wav,whine,0.5415625,48000,whine,0.27078125
+Audio S235_hum.wav,hum,0.5387916666666667,96000,hum,0.26939583333333333
+Audio S102_begging scream gradation.wav,begging scream gradation,0.699375,96000,begging scream gradation,0.3496875
+Audio S090_begging scream gradation.wav,begging scream gradation,0.8652604166666666,96000,begging scream gradation,0.4326302083333333
+Audio S054_begging scream.wav,begging scream,0.9718854166666666,96000,begging scream,0.4859427083333333
+Audio S228_hum.wav,hum,0.7917604166666666,96000,hum,0.3958802083333333
+Audio S144_contact call.wav,contact call,0.5599479166666667,96000,contact call,0.27997395833333333
+Audio S060_begging scream.wav,begging scream,1.4492395833333334,96000,begging scream,0.7246197916666667
+Audio S349_snort.wav,snort,0.3601666666666667,48000,snort,0.18008333333333335
+Audio S373_underwater call.wav,,1.1401041666666667,48000,underwater call,0.5700520833333333
+Audio S248_hum gradation.wav,hum gradation,1.104875,96000,hum gradation,0.5524375
+Audio S292_isolation call.wav,isolation call,1.6977708333333332,48000,isolation call,0.8488854166666666
+Audio S302_Ascending scream.wav,Ascending scream,0.5822604166666666,96000,Ascending scream,0.2911302083333333
+Audio S346_snort.wav,snort,0.37926041666666666,96000,snort,0.18963020833333333
+Audio S087_begging scream gradation.wav,begging scream gradation,1.407375,96000,begging scream gradation,0.7036875
+Audio S097_begging scream gradation.wav,begging scream gradation,0.829,96000,begging scream gradation,0.4145
+Audio S268_hum gradation.wav,hum gradation,1.0463125,48000,hum gradation,0.52315625
+Audio S337_snort.wav,snort,0.41428125,96000,snort,0.207140625
+Audio S241_hum.wav,hum,1.433875,96000,hum,0.7169375
+Audio S083_begging scream gradation.wav,begging scream gradation,1.3488854166666666,96000,begging scream gradation,0.6744427083333333
+Audio S319_Ascending scream.wav,Ascending scream,0.8136979166666667,96000,Ascending scream,0.40684895833333334
+Audio S193_growl.wav,growl,3.078875,48000,growl,1.5394375
+Audio S384_wavering scream.wav,wavering scream,1.8329583333333332,96000,wavering scream,0.9164791666666666
+Audio S383_wavering scream.wav,wavering scream,3.302604166666667,96000,wavering scream,1.6513020833333334
+Audio S353_snort.wav,snort,0.6171875,48000,snort,0.30859375
+Audio S151_contact call gradation.wav,contact call gradation,0.5490208333333333,96000,contact call gradation,0.27451041666666665
+Audio S324_Ascending scream.wav,Ascending scream,0.69953125,96000,Ascending scream,0.349765625
+Audio S118_contact call.wav,contact call,0.6518125,96000,contact call,0.32590625
+Audio S442_bark like.wav,,0.39975,96000,bark like,0.199875
+Audio S275_hum gradation.wav,hum gradation,0.9070833333333334,96000,hum gradation,0.4535416666666667
+Audio S344_snort.wav,snort,0.497875,96000,snort,0.2489375
+Audio S203_hah.wav,hah,0.40860416666666666,96000,hah,0.20430208333333333
+Audio S222_hum.wav,hum,1.3160729166666667,96000,hum,0.6580364583333334
+Audio S259_hum gradation.wav,hum gradation,1.0931666666666666,96000,hum gradation,0.5465833333333333
+Audio S313_Ascending scream.wav,Ascending scream,0.8199895833333334,96000,Ascending scream,0.4099947916666667
+Audio S409_whine.wav,whine,0.6595833333333333,96000,whine,0.32979166666666665
+Audio S368_suckling call.wav,suckling call,0.7501875,96000,suckling call,0.37509375
+Audio S244_hum.wav,hum,1.2943125,96000,hum,0.64715625
+Audio S255_hum gradation.wav,hum gradation,1.73753125,96000,hum gradation,0.868765625
+Audio S291_isolation call.wav,isolation call,1.5278333333333334,96000,isolation call,0.7639166666666667
+Audio S072_begging scream.wav,begging scream,0.7540416666666667,96000,begging scream,0.37702083333333336
+Audio S243_hum.wav,hum,0.5910520833333334,96000,hum,0.2955260416666667
+Audio S298_isolation call.wav,isolation call,1.4008854166666667,96000,isolation call,0.7004427083333333
+Audio S283_hum short.wav,,0.4311875,96000,hum short,0.21559375
+Audio S434_whistle double.wav,whistle double,1.0134791666666667,96000,whistle double,0.5067395833333334
+Audio S004_bark.wav,bark,0.30966666666666665,96000,bark,0.15483333333333332
+Audio S218_hum.wav,hum,0.48234375,96000,hum,0.241171875
+Audio S311_Ascending scream.wav,Ascending scream,0.7293333333333333,96000,Ascending scream,0.36466666666666664
+Audio S445_contact call like.wav,,0.97590625,96000,contact call like,0.487953125
+Audio S411_whistle.wav,whistle,0.36996875,96000,whistle,0.184984375
+Audio S352_snort.wav,snort,0.427375,48000,snort,0.2136875
+Audio S233_hum.wav,hum,0.48146875,96000,hum,0.240734375
+Audio S135_contact call.wav,contact call,0.49534375,96000,contact call,0.247671875
+Audio S284_hum short.wav,,0.4626354166666667,96000,hum short,0.23131770833333334
+Audio S287_isolation call.wav,isolation call,1.2139166666666668,96000,isolation call,0.6069583333333334
+Audio S062_begging scream.wav,begging scream,1.2545520833333332,96000,begging scream,0.6272760416666666
+Audio S295_isolation call.wav,isolation call,1.1600729166666666,96000,isolation call,0.5800364583333333
+Audio S051_begging scream.wav,begging scream,1.1551354166666667,96000,begging scream,0.5775677083333334
+Audio S191_growl.wav,growl,1.3637083333333333,96000,growl,0.6818541666666667
+Audio S077_begging scream gradation.wav,begging scream gradation,0.5948958333333333,96000,begging scream gradation,0.29744791666666665
+Audio S129_contact call.wav,contact call,0.5598333333333333,96000,contact call,0.27991666666666665
+Audio S323_Ascending scream.wav,Ascending scream,0.62515625,96000,Ascending scream,0.312578125
+Audio S223_hum.wav,hum,0.5395416666666667,96000,hum,0.26977083333333335
+Audio S133_contact call.wav,contact call,0.6525416666666667,96000,contact call,0.32627083333333334
+Audio S112_close call.wav,close call,0.38538541666666665,96000,close call,0.19269270833333332
+Audio S082_begging scream gradation.wav,begging scream gradation,0.8498125,96000,begging scream gradation,0.42490625
+Audio S394_whine.wav,whine,0.80040625,96000,whine,0.400203125
+Audio S043_begging scream.wav,begging scream,1.4823541666666666,96000,begging scream,0.7411770833333333
+Audio S056_begging scream.wav,begging scream,2.2488020833333335,96000,begging scream,1.1244010416666668
+Audio S325_Ascending scream.wav,Ascending scream,0.8926145833333333,96000,Ascending scream,0.44630729166666666
+Audio S159_contact call gradation.wav,contact call gradation,0.50971875,96000,contact call gradation,0.254859375
+Audio S252_hum gradation.wav,hum gradation,1.1975208333333334,96000,hum gradation,0.5987604166666667
+Audio S036_begging call.wav,begging call,0.5193020833333334,96000,begging call,0.2596510416666667
+Audio S307_Ascending scream.wav,Ascending scream,0.8073125,96000,Ascending scream,0.40365625
+Audio S407_whine.wav,whine,0.66625,96000,whine,0.333125
+Audio S183_growl.wav,growl,2.8009791666666666,96000,growl,1.4004895833333333
+Audio S288_isolation call.wav,isolation call,1.08871875,96000,isolation call,0.544359375
+Audio S045_begging scream.wav,begging scream,1.1956770833333332,96000,begging scream,0.5978385416666666
+Audio S180_growl.wav,growl,0.7365208333333333,96000,growl,0.36826041666666665
+Audio S103_begging scream gradation.wav,begging scream gradation,0.6766458333333333,96000,begging scream gradation,0.33832291666666664
+Audio S158_contact call gradation.wav,contact call gradation,0.4785520833333333,96000,contact call gradation,0.23927604166666666
+Audio S256_hum gradation.wav,hum gradation,1.8348125,96000,hum gradation,0.91740625
+Audio S121_contact call.wav,contact call,0.7375729166666667,96000,contact call,0.36878645833333334
+Audio S188_growl.wav,growl,1.1571458333333333,96000,growl,0.5785729166666667
+Audio S207_hah.wav,hah,0.5203958333333333,96000,hah,0.26019791666666664
+Audio S370_suckling call.wav,suckling call,0.83725,96000,suckling call,0.418625
+Audio S053_begging scream.wav,begging scream,0.69053125,96000,begging scream,0.345265625
+Audio S184_growl.wav,growl,0.7561041666666667,96000,growl,0.37805208333333334
+Audio S393_whine.wav,whine,1.0136875,96000,whine,0.50684375
+Audio S321_Ascending scream.wav,Ascending scream,0.8701458333333333,96000,Ascending scream,0.43507291666666664
+Audio S335_snort.wav,snort,0.37432291666666667,96000,snort,0.18716145833333334
+Audio S178_growl.wav,growl,5.323979166666667,48000,growl,2.6619895833333334
+Audio S306_Ascending scream.wav,Ascending scream,0.7950416666666666,96000,Ascending scream,0.3975208333333333
+Audio S084_begging scream gradation.wav,begging scream gradation,1.2996041666666667,96000,begging scream gradation,0.6498020833333333
+Audio S202_hah.wav,hah,0.51946875,96000,hah,0.259734375
+Audio S107_close call.wav,close call,0.432625,96000,close call,0.2163125
+Audio S146_contact call.wav,contact call,0.5756145833333334,96000,contact call,0.2878072916666667
+Audio S126_contact call.wav,contact call,0.5547291666666667,96000,contact call,0.27736458333333336
+Audio S065_begging scream.wav,begging scream,1.8603333333333334,96000,begging scream,0.9301666666666667
+Audio S257_hum gradation.wav,hum gradation,1.1274270833333333,96000,hum gradation,0.5637135416666667
+Audio S249_hum gradation.wav,hum gradation,1.8754375,96000,hum gradation,0.93771875
+Audio S350_snort.wav,snort,0.427375,48000,snort,0.2136875
+Audio S154_contact call gradation.wav,contact call gradation,0.55925,48000,contact call gradation,0.279625
+Audio S231_hum.wav,hum,0.5899479166666667,96000,hum,0.29497395833333334
+Audio S366_suckling call.wav,suckling call,2.1803333333333335,96000,suckling call,1.0901666666666667
+Audio S012_bark.wav,bark,0.6584479166666667,96000,bark,0.32922395833333334
+Audio S425_whistle.wav,whistle,0.40080208333333334,96000,whistle,0.20040104166666667
+Audio S342_snort.wav,snort,0.3740625,48000,snort,0.18703125
+Audio S042_begging call.wav,begging call,0.46038541666666666,96000,begging call,0.23019270833333333
+Audio S206_hah.wav,hah,0.394,96000,hah,0.197
+Audio S436_whistle double.wav,whistle double,0.86271875,96000,whistle double,0.431359375
+Audio S147_contact call gradation.wav,contact call gradation,0.5260833333333333,96000,contact call gradation,0.2630416666666667
+Audio S088_begging scream gradation.wav,begging scream gradation,1.1033645833333334,96000,begging scream gradation,0.5516822916666667
+Audio S016_bark.wav,bark,0.40570833333333334,96000,bark,0.20285416666666667
+Audio S167_contact call gradation.wav,contact call gradation,0.3498125,96000,contact call gradation,0.17490625
+Audio S388_wavering scream.wav,wavering scream,1.44421875,96000,wavering scream,0.722109375
+Audio S391_whine.wav,whine,0.47559375,96000,whine,0.237796875
+Audio S139_contact call.wav,contact call,0.7897291666666667,96000,contact call,0.39486458333333335
+Audio S401_whine.wav,whine,1.5109791666666668,96000,whine,0.7554895833333334
+Audio S312_Ascending scream.wav,Ascending scream,0.98309375,96000,Ascending scream,0.491546875
+Audio S197_growl.wav,growl,1.6950520833333333,96000,growl,0.8475260416666667
+Audio S142_contact call.wav,contact call,0.5791770833333333,96000,contact call,0.28958854166666664
+Audio S289_isolation call.wav,isolation call,0.9980104166666667,96000,isolation call,0.49900520833333334
+Audio S194_growl.wav,growl,4.139270833333334,48000,growl,2.069635416666667
+Audio S317_Ascending scream.wav,Ascending scream,0.7274791666666667,96000,Ascending scream,0.36373958333333334
+Audio S358_snort.wav,snort,0.38079166666666664,96000,snort,0.19039583333333332
+Audio S333_snort.wav,snort,0.36978125,96000,snort,0.184890625
+Audio S234_hum.wav,hum,0.4895,96000,hum,0.24475
+Audio S034_begging call.wav,begging call,0.43875,96000,begging call,0.219375
+Audio S247_hum.wav,hum,1.1192916666666666,96000,hum,0.5596458333333333
+Audio S123_contact call.wav,contact call,0.5507291666666667,96000,contact call,0.27536458333333336
