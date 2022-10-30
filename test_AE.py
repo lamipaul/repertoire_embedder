@@ -15,7 +15,7 @@ parser.add_argument("-encoder", type=str, default='sparrow_encoder')
 parser.add_argument("-frontend", type=str, default='logMel')
 args = parser.parse_args()
 
-modelname = f'{args.specie}_{args.bottleneck}_{args.frontend}_{args.nMel}.stdc'
+modelname = f'{args.specie}_{args.bottleneck}_{args.frontend}{args.nMel}_{args.encoder}_{args.nMel}_decod2_BN_nomaxPool.stdc'
 #modelname = f'{args.specie}_{args.bottleneck}_{args.frontend}_{args.encoder}_{args.nMel}.stdc'
 meta = models.meta[args.specie]
 df = pd.read_csv(f'{args.specie}/{args.specie}.csv')
@@ -30,8 +30,7 @@ if os.path.isfile(f'{args.specie}/encodings_{modelname[:-4]}npy'):
 else:
     gpu = torch.device('cuda')
     frontend = models.frontend[args.frontend](meta['sr'], meta['nfft'], meta['sampleDur'], args.nMel)
-    encoder = models.__dict__[args.encoder](args.bottleneck, (4, 4) if args.nMel == 128 else (2, 4))
-#    decoder = models.sparrow_decoder_old(args.bottleneck, (4, 4) if args.nMel == 128 else (2, 4))
+    encoder = models.__dict__[args.encoder](*((args.bottleneck // 16, (4, 4)) if args.nMel == 128 else (args.bottleneck // 8, (2, 4))))
     decoder = models.sparrow_decoder(args.bottleneck, (4, 4) if args.nMel == 128 else (2, 4))
     model = torch.nn.Sequential(frontend, encoder, decoder).to(gpu)
     model.load_state_dict(torch.load(f'{args.specie}/{modelname}'))
@@ -43,8 +42,7 @@ else:
             idxs.extend(idx)
             encodings.extend(encoding.cpu().detach())
 
-    idxs = np.array(idxs)
-    encodings = np.stack(encodings)
+    idxs, encodings = np.array(idxs), np.stack(encodings)
     X = umap.UMAP(n_jobs=-1).fit_transform(encodings)
     np.save(f'{args.specie}/encodings_{modelname[:-4]}npy', {'idxs':idxs, 'encodings':encodings, 'umap':X})
 

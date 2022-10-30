@@ -26,7 +26,7 @@ args = parser.parse_args()
 df = pd.read_csv(f'{args.specie}/{args.specie}.csv')
 print(f'{len(df)} available vocs')
 
-modelname = f'{args.specie}_{args.bottleneck}_{args.frontend}{args.nMel}_{args.encoder}_{args.nMel}_decod2_BN_nomaxPool.stdc'
+modelname = f'{args.specie}_{args.bottleneck}_{args.frontend}{args.nMel}_{args.encoder}_decod2_BN_nomaxPool.stdc'
 gpu = torch.device(f'cuda:{args.cuda}')
 writer = SummaryWriter(f'runs2/{modelname}')
 os.system(f'cp *.py runs2/{modelname}')
