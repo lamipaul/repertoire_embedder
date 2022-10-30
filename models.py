@@ -62,7 +62,7 @@ meta = {
   }
 }
 
-vgg16 = torchmodels.vgg16(weights=torchmodels.VGG16_Weights.DEFAULT)
+vgg16 = torchmodels.vgg16(pretrained=True) # weights=torchmodels.VGG16_Weights.DEFAULT)
 vgg16 = vgg16.features[:13]
 for nm, mod in vgg16.named_modules():
     if isinstance(mod, nn.MaxPool2d):
@@ -91,7 +91,7 @@ frontend = {
   'pcenMel': lambda sr, nfft, sampleDur, n_mel : nn.Sequential(
     STFT(nfft, int((sampleDur*sr - nfft)/128)),
     MelFilter(sr, nfft, n_mel, sr//nfft, sr//2),
-    PCENLayer(n_mel),
+    PCENLayer(n_mel, trainable=False),
     u.Croper2D(n_mel, 128)
   )
 }

@@ -97,7 +97,10 @@ for epoch in range(100_000//len(loader)):
             mask = ~df.loc[idxs].label.isna()
             clusters, labels = clusters[mask], df.loc[idxs[mask]].label
             writer.add_scalar('NMI HDBSCAN', metrics.normalized_mutual_info_score(labels, clusters), step)
-            writer.add_scalar('ARI HDBSCAN', metrics.adjusted_rand_score(labels, clusters), step)
+            try:
+                writer.add_scalar('ARI HDBSCAN', metrics.adjusted_rand_score(labels, clusters), step)
+            except:
+                pass
             writer.add_scalar('Homogeneity HDBSCAN', metrics.homogeneity_score(labels, clusters), step)
             writer.add_scalar('Completeness HDBSCAN', metrics.completeness_score(labels, clusters), step)
             writer.add_scalar('V-Measure HDBSCAN', metrics.v_measure_score(labels, clusters), step)
@@ -112,7 +115,7 @@ for epoch in range(100_000//len(loader)):
             writer.add_histogram('HDBSCAN Precisions ', np.array(precs), step)
             writer.add_histogram('HDBSCAN Recalls ', np.array(recs), step)
             df.drop('cluster', axis=1, inplace=True)
-
+            continue
             print('\rRunning elbow method for K-Means...', end='')
             ks = (5*1.2**np.arange(20)).astype(int)
             distorsions = [cluster.KMeans(n_clusters=k).fit(encodings).inertia_ for k in ks]
@@ -126,7 +129,10 @@ for epoch in range(100_000//len(loader)):
             writer.add_scalar('Silhouette', metrics.silhouette_score(encodings, clusters), step)
             clusters, labels = clusters[mask], df.loc[idxs[mask]].label
             writer.add_scalar('NMI K-Means', metrics.normalized_mutual_info_score(labels, clusters), step)
-            writer.add_scalar('ARI K-Means', metrics.adjusted_rand_score(labels, clusters), step)
+            try:
+                writer.add_scalar('ARI K-Means', metrics.adjusted_rand_score(labels, clusters), step)
+            except:
+                pass
             writer.add_scalar('Homogeneity K-Means', metrics.homogeneity_score(labels, clusters), step)
             writer.add_scalar('Completeness K-Means', metrics.completeness_score(labels, clusters), step)
             writer.add_scalar('V-Measure K-Means', metrics.v_measure_score(labels, clusters), step)
