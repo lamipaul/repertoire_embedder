@@ -86,8 +86,7 @@ for epoch in range(100_000//len(loader)):
                     encoding = model[:2](x.to(gpu))
                     idxs.extend(idx)
                     encodings.extend(encoding.cpu().detach())
-            idxs = np.array(idxs)
-            encodings = np.stack(encodings)
+            idxs, encodings = np.array(idxs), np.stack(encodings)
             
             print('Computing UMAP...', end='')
             try:
@@ -97,7 +96,7 @@ for epoch in range(100_000//len(loader)):
                 continue
             print('\rRunning HDBSCAN...', end='')
             clusters = hdbscan.HDBSCAN(min_cluster_size=len(df)//100, min_samples=5, core_dist_n_jobs=-1, cluster_selection_method='leaf').fit_predict(X)
-            df.loc[idxs, 'cluster'] = clusters.astype(int)
+            # df.loc[idxs, 'cluster'] = clusters.astype(int)
             mask = ~df.loc[idxs].label.isna()
             clusters, labels = clusters[mask], df.loc[idxs[mask]].label
             NMIs.append(metrics.normalized_mutual_info_score(labels, clusters))
@@ -110,48 +109,47 @@ for epoch in range(100_000//len(loader)):
             writer.add_scalar('Completeness HDBSCAN', metrics.completeness_score(labels, clusters), step)
             writer.add_scalar('V-Measure HDBSCAN', metrics.v_measure_score(labels, clusters), step)
             
-            print('\rComputing HDBSCAN precision and recall distributions', end='')
-            labelled = df[~df.label.isna()]
-            precs, recs = [], []
-            for l, grp in labelled.groupby('label'):
-                best = (grp.groupby('cluster').fn.count() / labelled.groupby('cluster').fn.count()).idxmax()
-                precs.append((grp.cluster==best).sum()/(labelled.cluster==best).sum())
-                recs.append((grp.cluster==best).sum()/len(grp))
-            writer.add_histogram('HDBSCAN Precisions ', np.array(precs), step)
-            writer.add_histogram('HDBSCAN Recalls ', np.array(recs), step)
-            df.drop('cluster', axis=1, inplace=True)
-            continue
-            print('\rRunning elbow method for K-Means...', end='')
-            ks = (5*1.2**np.arange(20)).astype(int)
-            distorsions = [cluster.KMeans(n_clusters=k).fit(encodings).inertia_ for k in ks]
-            print('\rEstimating elbow...', end='')
-            errors = [linregress(ks[:i], distorsions[:i]).stderr + linregress(ks[i+1:], distorsions[i+1:]).stderr for i in range(2, len(ks)-2)]
-            k = ks[np.argmin(errors)]
-            writer.add_scalar('Chosen K', k, step)
-            clusters = cluster.KMeans(n_clusters=k).fit_predict(encodings)
-            df.loc[idxs, 'cluster'] = clusters.astype(int)
+            # print('\rComputing HDBSCAN precision and recall distributions', end='')
+            # labelled = df[~df.label.isna()]
+            # precs, recs = [], []
+            # for l, grp in labelled.groupby('label'):
+            #     best = (grp.groupby('cluster').fn.count() / labelled.groupby('cluster').fn.count()).idxmax()
+            #     precs.append((grp.cluster==best).sum()/(labelled.cluster==best).sum())
+            #     recs.append((grp.cluster==best).sum()/len(grp))
+            # writer.add_histogram('HDBSCAN Precisions ', np.array(precs), step)
+            # writer.add_histogram('HDBSCAN Recalls ', np.array(recs), step)
+            # df.drop('cluster', axis=1, inplace=True)
+            # print('\rRunning elbow method for K-Means...', end='')
+            # ks = (5*1.2**np.arange(20)).astype(int)
+            # distorsions = [cluster.KMeans(n_clusters=k).fit(encodings).inertia_ for k in ks]
+            # print('\rEstimating elbow...', end='')
+            # errors = [linregress(ks[:i], distorsions[:i]).stderr + linregress(ks[i+1:], distorsions[i+1:]).stderr for i in range(2, len(ks)-2)]
+            # k = ks[np.argmin(errors)]
+            # writer.add_scalar('Chosen K', k, step)
+            # clusters = cluster.KMeans(n_clusters=k).fit_predict(encodings)
+            # df.loc[idxs, 'cluster'] = clusters.astype(int)
 
-            writer.add_scalar('Silhouette', metrics.silhouette_score(encodings, clusters), step)
-            clusters, labels = clusters[mask], df.loc[idxs[mask]].label
-            writer.add_scalar('NMI K-Means', metrics.normalized_mutual_info_score(labels, clusters), step)
-            try:
-                writer.add_scalar('ARI K-Means', metrics.adjusted_rand_score(labels, clusters), step)
-            except:
-                pass
-            writer.add_scalar('Homogeneity K-Means', metrics.homogeneity_score(labels, clusters), step)
-            writer.add_scalar('Completeness K-Means', metrics.completeness_score(labels, clusters), step)
-            writer.add_scalar('V-Measure K-Means', metrics.v_measure_score(labels, clusters), step)
+            # writer.add_scalar('Silhouette', metrics.silhouette_score(encodings, clusters), step)
+            # clusters, labels = clusters[mask], df.loc[idxs[mask]].label
+            # writer.add_scalar('NMI K-Means', metrics.normalized_mutual_info_score(labels, clusters), step)
+            # try:
+            #     writer.add_scalar('ARI K-Means', metrics.adjusted_rand_score(labels, clusters), step)
+            # except:
+            #     pass
+            # writer.add_scalar('Homogeneity K-Means', metrics.homogeneity_score(labels, clusters), step)
+            # writer.add_scalar('Completeness K-Means', metrics.completeness_score(labels, clusters), step)
+            # writer.add_scalar('V-Measure K-Means', metrics.v_measure_score(labels, clusters), step)
 
-            print('\rComputing K-Means precision and recall distributions', end='') 
-            labelled = df[~df.label.isna()]
-            precs, recs = [], []
-            for l, grp in labelled.groupby('label'):
-                best = (grp.groupby('cluster').fn.count() / labelled.groupby('cluster').fn.count()).idxmax()
-                precs.append((grp.cluster==best).sum()/(labelled.cluster==best).sum())
-                recs.append((grp.cluster==best).sum()/len(grp))
-            writer.add_histogram('K-Means Precisions ', np.array(precs), step)
-            writer.add_histogram('K-Means Recalls ', np.array(recs), step)
-            df.drop('cluster', axis=1, inplace=True)
+            # print('\rComputing K-Means precision and recall distributions', end='') 
+            # labelled = df[~df.label.isna()]
+            # precs, recs = [], []
+            # for l, grp in labelled.groupby('label'):
+            #     best = (grp.groupby('cluster').fn.count() / labelled.groupby('cluster').fn.count()).idxmax()
+            #     precs.append((grp.cluster==best).sum()/(labelled.cluster==best).sum())
+            #     recs.append((grp.cluster==best).sum()/len(grp))
+            # writer.add_histogram('K-Means Precisions ', np.array(precs), step)
+            # writer.add_histogram('K-Means Recalls ', np.array(recs), step)
+            # df.drop('cluster', axis=1, inplace=True)
 
             if len(NMIs) > 10 and max(NMIs) > max(NMIs[-10:]):
                 print('\rEarly stop')
