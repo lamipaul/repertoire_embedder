@@ -79,7 +79,7 @@ for epoch in range(100_000//len(loader)):
             scheduler.step()
 
             # Actual test
-            model.eval()
+            model[1:].eval()
             with torch.no_grad():
                 encodings, idxs = [], []
                 for x, idx in tqdm(loader, desc='test '+str(step), leave=False):
@@ -142,5 +142,5 @@ for epoch in range(100_000//len(loader)):
             writer.add_histogram('K-Means Recalls ', np.array(recs), step)
             df.drop('cluster', axis=1, inplace=True)
             print('\r', end='')
-            model.train()
+            model[1:].train()
         step += 1
