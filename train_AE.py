@@ -90,7 +90,11 @@ for epoch in range(100_000//len(loader)):
             encodings = np.stack(encodings)
             
             print('Computing UMAP...', end='')
-            X = umap.UMAP(n_jobs=-1).fit_transform(encodings)
+            try:
+                X = umap.UMAP(n_jobs=-1).fit_transform(encodings)
+            except:
+                print('\rUMAP failed :s')
+                continue
             print('\rRunning HDBSCAN...', end='')
             clusters = hdbscan.HDBSCAN(min_cluster_size=len(df)//100, min_samples=5, core_dist_n_jobs=-1, cluster_selection_method='leaf').fit_predict(X)
             df.loc[idxs, 'cluster'] = clusters.astype(int)
