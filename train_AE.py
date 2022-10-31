@@ -47,7 +47,7 @@ loader = torch.utils.data.DataLoader(u.Dataset(df, f'{args.specie}/audio/', meta
                                batch_size=args.batch_size, shuffle=True, num_workers=8, prefetch_factor=8, collate_fn=u.collate_fn)
 MSE = torch.nn.MSELoss()
 
-step = 0
+step, NMIs = 0, []
 for epoch in range(100_000//len(loader)):
     for x, name in tqdm(loader, desc=str(epoch), leave=False):
         optimizer.zero_grad()
@@ -100,7 +100,8 @@ for epoch in range(100_000//len(loader)):
             df.loc[idxs, 'cluster'] = clusters.astype(int)
             mask = ~df.loc[idxs].label.isna()
             clusters, labels = clusters[mask], df.loc[idxs[mask]].label
-            writer.add_scalar('NMI HDBSCAN', metrics.normalized_mutual_info_score(labels, clusters), step)
+            NMIs.append(metrics.normalized_mutual_info_score(labels, clusters))
+            writer.add_scalar('NMI HDBSCAN', NMIs[-1], step)
             try:
                 writer.add_scalar('ARI HDBSCAN', metrics.adjusted_rand_score(labels, clusters), step)
             except:
@@ -151,6 +152,11 @@ for epoch in range(100_000//len(loader)):
             writer.add_histogram('K-Means Precisions ', np.array(precs), step)
             writer.add_histogram('K-Means Recalls ', np.array(recs), step)
             df.drop('cluster', axis=1, inplace=True)
+
+            if len(NMIs) > 10 and max(NMIs) > max(NMIs[-10:]):
+                print('\rEarly stop')
+                exit()
+
             print('\r', end='')
             model[1:].train()
         step += 1

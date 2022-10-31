@@ -79,7 +79,7 @@ frontend = {
     STFT(nfft, int((sampleDur*sr - nfft)/128)),
     MelFilter(sr, nfft, n_mel, 0, sr//2),
     Log1p(7, trainable=False),
-    nn.Instancenorm2d(1),
+    nn.InstanceNorm2d(1),
     u.Croper2D(n_mel, 128)
   ),
   'logSTFT': lambda sr, nfft, sampleDur, n_mel : nn.Sequential(
