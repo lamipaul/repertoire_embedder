@@ -26,7 +26,7 @@ args = parser.parse_args()
 df = pd.read_csv(f'{args.specie}/{args.specie}.csv')
 print(f'{len(df)} available vocs')
 
-modelname = f'{args.specie}_{args.bottleneck}_{args.frontend}{args.nMel if 'Mel' in args.frontend else ''}_{args.encoder}_decod2_BN_nomaxPool.stdc'
+modelname = f'{args.specie}_{args.bottleneck}_{args.frontend}{args.nMel if "Mel" in args.frontend else ""}_{args.encoder}_decod2_BN_nomaxPool.stdc'
 gpu = torch.device(f'cuda:{args.cuda}')
 writer = SummaryWriter(f'runs2/{modelname}')
 os.system(f'cp *.py runs2/{modelname}')
@@ -65,7 +65,7 @@ for epoch in range(100_000//len(loader)):
         writer.add_scalar('loss', score.item(), step)
         loss.append(score.item())
 
-        if min(loss) - 1e-2 < min(loss[-1000:]):
+        if len(loss) > 1000 and min(loss) - 1e-2 < min(loss[-1000:]):
             print('Early stop')
             exit()
 
