@@ -65,7 +65,7 @@ for epoch in range(100_000//len(loader)):
         writer.add_scalar('loss', score.item(), step)
         loss.append(score.item())
 
-        if len(loss) > 1000 and min(loss) - 1e-2 < min(loss[-1000:]):
+        if len(loss) > 1000 and min(loss[:-1000]) - 1e-2 < min(loss[-1000:]):
             print('Early stop')
             exit()
 
@@ -106,8 +106,7 @@ for epoch in range(100_000//len(loader)):
             # df.loc[idxs, 'cluster'] = clusters.astype(int)
             mask = ~df.loc[idxs].label.isna()
             clusters, labels = clusters[mask], df.loc[idxs[mask]].label
-            NMIs.append(metrics.normalized_mutual_info_score(labels, clusters))
-            writer.add_scalar('NMI HDBSCAN', NMIs[-1], step)
+            writer.add_scalar('NMI HDBSCAN', metrics.normalized_mutual_info_score(labels, clusters), step)
             try:
                 writer.add_scalar('ARI HDBSCAN', metrics.adjusted_rand_score(labels, clusters), step)
             except:
