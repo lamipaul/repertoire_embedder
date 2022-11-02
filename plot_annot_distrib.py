@@ -12,10 +12,10 @@ plt.tight_layout()
 plt.savefig('annot_distrib.pdf')
 
 
-a = "Specie & \# Classes & \# Annotated samples & \# Samples \\\\ \hline \n"
+a = "Specie & \# Classes & \# Annotated samples & \# Samples & Proportion of annotations\\\\ \hline \n"
 for specie in species:
     df = pd.read_csv(f'{specie}/{specie}.csv')
-    a += f"{specie.replace('_',' ')} & {df.label.nunique()} & {(~df.label.isna()).sum()} & {len(df)} \\\\ \hline \n"
+    a += f"{specie.replace('_',' ')} & {df.label.nunique()} & {(~df.label.isna()).sum()} & {len(df)} & {int(100*(~df.label.isna()).sum()/len(df))} \\\\ \hline \n"
 f = open('annot_distrib.tex', 'w')
 f.write(a)
 f.close()

@@ -3,5 +3,5 @@ bengalese_finch2
 california_thrashers
 cassin_vireo
 black-headed_grosbeaks
-humpback2
+humpback
 zebra_finch
