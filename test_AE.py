@@ -15,7 +15,7 @@ parser.add_argument("-encoder", type=str, default='sparrow_encoder')
 parser.add_argument("-frontend", type=str, default='logMel')
 args = parser.parse_args()
 
-modelname = f'{args.specie}_{args.bottleneck}_{args.frontend}{args.nMel}_{args.encoder}_decod2_BN_nomaxPool.stdc'
+modelname = f'{args.specie}_{args.bottleneck}_{args.frontend}{args.nMel if "Mel" in args.frontend else ""}_{args.encoder}_decod2_BN_nomaxPool.stdc'
 meta = models.meta[args.specie]
 df = pd.read_csv(f'{args.specie}/{args.specie}.csv')
 print(f'Tests for model {modelname}')

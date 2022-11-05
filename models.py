@@ -86,7 +86,7 @@ frontend = {
     STFT(nfft, int((sampleDur*sr - nfft)/128)),
     Log1p(7, trainable=False),
     nn.InstanceNorm2d(1),
-    u.Croper2D(n_mel, 128)
+    nn.AdaptiveMaxPool2d((128, 128))
   ),
   'pcenMel': lambda sr, nfft, sampleDur, n_mel : nn.Sequential(
     STFT(nfft, int((sampleDur*sr - nfft)/128)),
