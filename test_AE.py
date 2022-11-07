@@ -10,7 +10,7 @@ torch.multiprocessing.set_sharing_strategy('file_system')
 parser = argparse.ArgumentParser()
 parser.add_argument("specie", type=str)
 parser.add_argument("-bottleneck", type=int, default=16)
-parser.add_argument("-nMel", type=int, default=64)
+parser.add_argument("-nMel", type=int, default=128)
 parser.add_argument("-encoder", type=str, default='sparrow_encoder')
 parser.add_argument("-frontend", type=str, default='logMel')
 args = parser.parse_args()
@@ -45,7 +45,7 @@ else:
     X = umap.UMAP(n_jobs=-1).fit_transform(encodings)
     np.save(f'{args.specie}/encodings_{modelname[:-4]}npy', {'idxs':idxs, 'encodings':encodings, 'umap':X})
 
-clusters = hdbscan.HDBSCAN(min_cluster_size=200, min_samples=20, cluster_selection_epsilon=0.05, core_dist_n_jobs=-1, cluster_selection_method='leaf').fit_predict(X)
+clusters = hdbscan.HDBSCAN(min_cluster_size=10, min_samples=5, cluster_selection_epsilon=0.0, core_dist_n_jobs=-1, cluster_selection_method='eom').fit_predict(X)
 df.loc[idxs, 'cluster'] = clusters.astype(int)
 mask = ~df.loc[idxs].label.isna()
 
