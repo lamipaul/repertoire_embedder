@@ -7,6 +7,7 @@ from sklearn import metrics
 import umap, hdbscan
 torch.multiprocessing.set_sharing_strategy('file_system')
 
+
 parser = argparse.ArgumentParser()
 parser.add_argument("specie", type=str)
 parser.add_argument("-bottleneck", type=int, default=16)
@@ -21,8 +22,6 @@ df = pd.read_csv(f'{args.specie}/{args.specie}.csv')
 print(f'Tests for model {modelname}')
 print(f'{len(df)} available vocs')
 
-loader = torch.utils.data.DataLoader(u.Dataset(df, f'{args.specie}/audio/', meta['sr'], meta['sampleDur']), batch_size=64, shuffle=True, num_workers=8, collate_fn=u.collate_fn)
-
 if os.path.isfile(f'{args.specie}/encodings_{modelname[:-4]}npy'):
     dic = np.load(f'{args.specie}/encodings_{modelname[:-4]}npy', allow_pickle=True).item()
     idxs, encodings, X = dic['idxs'], dic['encodings'], dic['umap']
@@ -34,6 +33,7 @@ else:
     model = torch.nn.Sequential(frontend, encoder, decoder).to(gpu)
     model.load_state_dict(torch.load(f'{args.specie}/{modelname}'))
     model.eval()
+    loader = torch.utils.data.DataLoader(u.Dataset(df, f'{args.specie}/audio/', meta['sr'], meta['sampleDur']), batch_size=64, shuffle=True, num_workers=8, collate_fn=u.collate_fn)
     with torch.no_grad():
         encodings, idxs = [], []
         for x, idx in tqdm(loader, desc='test '+args.specie, leave=False):
@@ -45,7 +45,7 @@ else:
     X = umap.UMAP(n_jobs=-1).fit_transform(encodings)
     np.save(f'{args.specie}/encodings_{modelname[:-4]}npy', {'idxs':idxs, 'encodings':encodings, 'umap':X})
 
-clusters = hdbscan.HDBSCAN(min_cluster_size=10, min_samples=5, cluster_selection_epsilon=0.0, core_dist_n_jobs=-1, cluster_selection_method='eom').fit_predict(X)
+clusters = hdbscan.HDBSCAN(min_cluster_size=50, min_samples=5, cluster_selection_epsilon=0.05, core_dist_n_jobs=-1, cluster_selection_method='leaf').fit_predict(X)
 df.loc[idxs, 'cluster'] = clusters.astype(int)
 mask = ~df.loc[idxs].label.isna()
 
@@ -74,7 +74,15 @@ print('Completeness', metrics.completeness_score(labels, clusters))
 print('V-Measure', metrics.v_measure_score(labels, clusters))
 
 labelled = df[~df.label.isna()]
+goodClusters = []
 for l, grp in labelled.groupby('label'):
-    best = (grp.groupby('cluster').fn.count() / labelled.groupby('cluster').fn.count()).idxmax()
+    precisions = grp.groupby('cluster').fn.count() / labelled.groupby('cluster').fn.count()
+    best = precisions.idxmax()
+    goodClusters.extend(precisions[precisions > 0.9].index)
     print(f'Best precision for {l} is for cluster {best} with {(df.cluster==best).sum()} points, \
-with precision {((labelled.cluster==best)&(labelled.label==l)).sum()/(labelled.cluster==best).sum():.2f} and recall {((labelled.cluster==best)&(labelled.label==l)).sum()/(labelled.label==l).sum():.2f}')
+    with precision {((labelled.cluster==best)&(labelled.label==l)).sum()/(labelled.cluster==best).sum():.2f}\
+     and recall {((labelled.cluster==best)&(labelled.label==l)).sum()/(labelled.label==l).sum():.2f}')
+
+
+print(f'{len(goodClusters)} clusters would sort {df.cluster.isin(goodClusters).sum()/len(df)*100:.0f}% of samples')
+print(f'{len(goodClusters)/df.label.nunique():.1f} cluster per label in avg)')

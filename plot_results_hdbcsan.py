@@ -5,7 +5,7 @@ import numpy as np
 from sklearn import metrics
 
 species = np.loadtxt('good_species.txt', dtype=str)
-frontends = ['16_pcenMel128', '16_logMel128', '16_logSTFT', '16_Mel128', '8_pcenMel64', '32_pcenMel128']
+frontends = ['16_logMel128', '16_logSTFT', '16_Mel128', '16_pcenMel128', '8_pcenMel64', '32_pcenMel128', '64_pcenMel128']
 plt.figure()
 for specie in species:
     df = pd.read_csv(f'{specie}/{specie}.csv')
@@ -30,3 +30,4 @@ plt.grid()
 plt.tight_layout()
 plt.legend()
 plt.savefig('NMIs_hdbscan.pdf')
+plt.close()

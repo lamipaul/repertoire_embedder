@@ -8,7 +8,7 @@ import torch
 parser = argparse.ArgumentParser()
 parser.add_argument("specie", type=str)
 parser.add_argument("-frontend", type=str, default='logMel')
-parser.add_argument("-nMel", type=int, default=64)
+parser.add_argument("-nMel", type=int, default=128)
 args = parser.parse_args()
 
 meta = models.meta[args.specie]

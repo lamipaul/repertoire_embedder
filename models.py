@@ -41,12 +41,12 @@ meta = {
     'sampleDur': 2
   },
   'humpback':{
-    'nfft': 512,
+    'nfft': 1024,
     'sr': 11025,
     'sampleDur': 2
   },
   'humpback2':{
-    'nfft': 512,
+    'nfft': 2048,
     'sr': 11025,
     'sampleDur': 2
   },
@@ -57,12 +57,17 @@ meta = {
   },
   'otter':{
     'nfft':2048,
-    'sr':48000,
-    'sampleDur':0.5
+    'sr':96000,
+    'sampleDur':1
+  },
+  'dolphin':{
+    'nfft':512,
+    'sr':96000,
+    'sampleDur':2
   }
 }
 
-vgg16 = torchmodels.vgg16(pretrained=True) # weights=torchmodels.VGG16_Weights.DEFAULT)
+vgg16 = torchmodels.vgg16(weights=torchmodels.VGG16_Weights.DEFAULT)
 vgg16 = vgg16.features[:13]
 for nm, mod in vgg16.named_modules():
     if isinstance(mod, nn.MaxPool2d):
@@ -77,6 +82,13 @@ frontend = {
   ),
   'logMel': lambda sr, nfft, sampleDur, n_mel : nn.Sequential(
     STFT(nfft, int((sampleDur*sr - nfft)/128)),
+    MelFilter(sr, nfft, n_mel, 0, sr//2),
+    Log1p(7, trainable=False),
+    nn.InstanceNorm2d(1),
+    u.Croper2D(n_mel, 128)
+  ),
+  'logMel_vggish': lambda sr, nfft, sampleDur, n_mel : nn.Sequential(
+    STFT(nfft, int((sampleDur*sr - nfft)/96)),
     MelFilter(sr, nfft, n_mel, 0, sr//2),
     Log1p(7, trainable=False),
     nn.InstanceNorm2d(1),
@@ -117,8 +129,28 @@ sparrow_VQ_encoder = lambda nfeat, shape : nn.Sequential(
   u.Reshape(nfeat * shape[0] * shape[1])
 )
 
+sparrow_encoder_maxPool = lambda nfeat, shape : nn.Sequential(
+  nn.Conv2d(1, 32, 3, bias=False, padding=1),
+  nn.BatchNorm2d(32),
+  nn.ReLU(True),
+  nn.Conv2d(32, 32, 3, bias=False, padding=1),
+  nn.BatchNorm2d(32),
+  nn.MaxPool2d((4, 4)),
+  nn.ReLU(True),
+  nn.Conv2d(32, 32, 3, bias=False, padding=1),
+  nn.BatchNorm2d(32),
+  nn.ReLU(True),
+  nn.Conv2d(32, 32, 3, bias=False, padding=1),
+  nn.BatchNorm2d(32),
+  nn.ReLU(True),
+  nn.Conv2d(32, nfeat, 3, bias=False, padding=1),
+  nn.MaxPool2d((4, 4)),
+  u.Reshape(nfeat * shape[0] * shape[1])
+)
+
+
 sparrow_encoder = lambda nfeat, shape : nn.Sequential(
-  nn.Conv2d(1, 32, 3, stride=2, bias=False, padding=(1)),
+  nn.Conv2d(1, 32, 3, stride=2, bias=False, padding=1),
   nn.BatchNorm2d(32),
   nn.ReLU(True),
   nn.Conv2d(32, 64, 3, stride=2, bias=False, padding=1),
@@ -177,7 +209,7 @@ sparrow_decoder = lambda nfeat, shape : nn.Sequential(
   nn.Conv2d(32, 1, (3, 3), bias=False, padding=1),
   nn.BatchNorm2d(1),
   nn.ReLU(True),
-  nn.Conv2d(1, 1, (3, 3), bias=False, padding=1),
+  nn.Conv2d(1, 1, (3, 3), bias=False, padding=1)
 )
 
 sparrow_decoder_old = lambda nfeat, shape : nn.Sequential(

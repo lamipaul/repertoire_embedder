@@ -4,4 +4,5 @@ california_thrashers
 cassin_vireo
 black-headed_grosbeaks
 humpback
-zebra_finch
+dolphin
+otter

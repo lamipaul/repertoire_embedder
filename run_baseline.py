@@ -12,8 +12,8 @@ args = parser.parse_args()
 
 df = pd.read_csv(f'{args.specie}/{args.specie}.csv')
 
-def norm(arr):
-    return (arr - np.mean(arr) ) / np.std(arr)
+norm = lambda arr: (arr - np.mean(arr) ) / np.std(arr)
+
 meta = models.meta[args.specie]
 
 feats = ['fund', 'cvfund', 'maxfund', 'minfund', 'meansal', 'meanspect', 'stdspect', 'skewspect',\
@@ -32,7 +32,7 @@ def process(idx):
     if fs != meta['sr']:
         sig = resample(sig, int(len(sig)/fs*meta['sr']))
     sound = BioSound(soundWave=norm(sig), fs=fs)
-    sound.spectroCalc(max_freq=meta['sr']//2)
+    sound.spectroCalc(max_freq=meta['sr']//2, spec_sample_rate=128//meta['sampleDur'])
     sound.rms = sound.sound.std() 
     sound.ampenv(cutoff_freq = 20, amp_sample_rate = 1000)
     sound.spectrum(f_high=meta['sr']//2 - 1)
@@ -43,9 +43,9 @@ def process(idx):
     
     return [sound.__dict__[f] for f in feats]
 
-res = p_tqdm.p_map(process, df.index[:10])
+res = p_tqdm.p_map(process, df.index[:100], num_cpus=16)
 
-for i, mr in zip(df.index[:10], res):
+for i, mr in zip(df.index[:100], res):
     for f, r in zip(feats, mr):
         df.loc[i, f] = r
 

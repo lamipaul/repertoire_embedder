@@ -67,8 +67,10 @@ for epoch in range(100_000//len(loader)):
 
         if len(loss) > 2000 and np.median(loss[-2000:-1000]) < np.median(loss[-1000:]):
             print('Early stop')
+            torch.save(model.state_dict(), f'{args.specie}/{modelname}')
             exit()
-
+        step += 1
+        continue
         # TEST ROUTINE
         if step % 500 == 0:
             # Plot reconstructions
