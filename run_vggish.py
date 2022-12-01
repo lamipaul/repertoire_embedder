@@ -7,7 +7,6 @@ import models, utils as u
 import pandas as pd, numpy as np, torch
 torch.multiprocessing.set_sharing_strategy('file_system')
 
-
 parser = argparse.ArgumentParser()
 parser.add_argument("specie", type=str)
 args = parser.parse_args()
@@ -16,7 +15,7 @@ df = pd.read_csv(f'{args.specie}/{args.specie}.csv')
 
 meta = models.meta[args.specie]
 
-if not os.path.isfile(f'{args.specie}/encodings_vggish.npy'):
+if not os.path.isfile(f'{args.specie}/encodings/encodings_vggish.npy'):
     gpu = torch.device('cuda')
     frontend = models.frontend['logMel_vggish'](meta['sr'], meta['nfft'], meta['sampleDur'], 64)
     vggish = torch.hub.load('harritaylor/torchvggish', 'vggish')
@@ -30,14 +29,14 @@ if not os.path.isfile(f'{args.specie}/encodings_vggish.npy'):
         for x, idx in tqdm(loader, desc='test '+args.specie, leave=False):
             # encoding = model(x.to(gpu))
             encoding = vggish(x.numpy().squeeze(0), fs=16000)
-            idxs.extend(idx)
-            encodings.extend(encoding.cpu().detach())
+            idxs.extend(idx.numpy())
+            encodings.extend(encoding.cpu().numpy())
 
     idxs, encodings = np.array(idxs), np.stack(encodings)
     X = umap.UMAP(n_jobs=-1).fit_transform(encodings)
-    np.save(f'{args.specie}/encodings_vggish.npy', {'idxs':idxs, 'encodings':encodings, 'umap':X})
+    np.save(f'{args.specie}/encodings/encodings_vggish.npy', {'idxs':idxs, 'encodings':encodings, 'umap':X})
 else:
-    dic = np.load(f'{args.specie}/encodings_vggish.npy', allow_pickle=True).item()
+    dic = np.load(f'{args.specie}/encodings/encodings_vggish.npy', allow_pickle=True).item()
     idxs, encodings, X = dic['idxs'], dic['encodings'], dic['umap']
 
 clusters = hdbscan.HDBSCAN(min_cluster_size=50, min_samples=5, cluster_selection_epsilon=0.05, core_dist_n_jobs=-1, cluster_selection_method='leaf').fit_predict(X)
@@ -50,7 +49,7 @@ plt.figure(figsize=(20, 10))
 plt.scatter(X[clusters==-1,0], X[clusters==-1,1], s=2, alpha=.2, color='Grey')
 plt.scatter(X[clusters!=-1,0], X[clusters!=-1,1], s=2, c=clusters[clusters!=-1], cmap='tab20')
 plt.tight_layout()
-plt.savefig(f'{args.specie}/vggish_projection_clusters.png')
+plt.savefig(f'{args.specie}/projections/vggish_projection_clusters.png')
 
 plt.figure(figsize=(20, 10))
 plt.scatter(X[~mask,0], X[~mask,1], s=2, alpha=.2, color='Grey')
@@ -58,7 +57,7 @@ for l, grp in df.groupby('label'):
     plt.scatter(X[df.loc[idxs].label==l, 0], X[df.loc[idxs].label==l, 1], s=4, label=l)
 plt.legend()
 plt.tight_layout()
-plt.savefig(f'{args.specie}/vggish_projection_labels.png')
+plt.savefig(f'{args.specie}/projections/vggish_projection_labels.png')
 
 
 clusters, labels = clusters[mask], df.loc[idxs[mask]].label

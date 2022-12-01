@@ -46,7 +46,7 @@ meta = {
     'sampleDur': 2
   },
   'humpback2':{
-    'nfft': 2048,
+    'nfft': 1024,
     'sr': 11025,
     'sampleDur': 2
   },
@@ -98,7 +98,7 @@ frontend = {
     STFT(nfft, int((sampleDur*sr - nfft)/128)),
     Log1p(7, trainable=False),
     nn.InstanceNorm2d(1),
-    nn.AdaptiveMaxPool2d((128, 128))
+    nn.AdaptiveMaxPool2d((n_mel, 128))
   ),
   'pcenMel': lambda sr, nfft, sampleDur, n_mel : nn.Sequential(
     STFT(nfft, int((sampleDur*sr - nfft)/128)),

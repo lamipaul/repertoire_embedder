@@ -22,8 +22,8 @@ df = pd.read_csv(f'{args.specie}/{args.specie}.csv')
 print(f'Tests for model {modelname}')
 print(f'{len(df)} available vocs')
 
-if os.path.isfile(f'{args.specie}/encodings_{modelname[:-4]}npy'):
-    dic = np.load(f'{args.specie}/encodings_{modelname[:-4]}npy', allow_pickle=True).item()
+if os.path.isfile(f'{args.specie}/encodings/encodings_{modelname[:-4]}npy'):
+    dic = np.load(f'{args.specie}/encodings/encodings_{modelname[:-4]}npy', allow_pickle=True).item()
     idxs, encodings, X = dic['idxs'], dic['encodings'], dic['umap']
 else:
     gpu = torch.device('cuda')
@@ -31,7 +31,7 @@ else:
     encoder = models.__dict__[args.encoder](*((args.bottleneck // 16, (4, 4)) if args.nMel == 128 else (args.bottleneck // 8, (2, 4))))
     decoder = models.sparrow_decoder(args.bottleneck, (4, 4) if args.nMel == 128 else (2, 4))
     model = torch.nn.Sequential(frontend, encoder, decoder).to(gpu)
-    model.load_state_dict(torch.load(f'{args.specie}/{modelname}'))
+    model.load_state_dict(torch.load(f'{args.specie}/weights/{modelname}'))
     model.eval()
     loader = torch.utils.data.DataLoader(u.Dataset(df, f'{args.specie}/audio/', meta['sr'], meta['sampleDur']), batch_size=64, shuffle=True, num_workers=8, collate_fn=u.collate_fn)
     with torch.no_grad():
@@ -43,9 +43,11 @@ else:
 
     idxs, encodings = np.array(idxs), np.stack(encodings)
     X = umap.UMAP(n_jobs=-1).fit_transform(encodings)
-    np.save(f'{args.specie}/encodings_{modelname[:-4]}npy', {'idxs':idxs, 'encodings':encodings, 'umap':X})
+    np.save(f'{args.specie}/encodings/encodings_{modelname[:-4]}npy', {'idxs':idxs, 'encodings':encodings, 'umap':X})
 
-clusters = hdbscan.HDBSCAN(min_cluster_size=50, min_samples=5, cluster_selection_epsilon=0.05, core_dist_n_jobs=-1, cluster_selection_method='leaf').fit_predict(X)
+clusters = hdbscan.HDBSCAN(min_cluster_size=len(df)//100, min_samples=5, core_dist_n_jobs=-1, cluster_selection_method='eom').fit_predict(X)
+#clusters = hdbscan.HDBSCAN(min_cluster_size=20, core_dist_n_jobs=-1, cluster_selection_method='leaf').fit_predict(X)
+# clusters = hdbscan.HDBSCAN(min_cluster_size=10, min_samples=3, cluster_selection_epsilon=0.05, core_dist_n_jobs=-1, cluster_selection_method='leaf').fit_predict(X)
 df.loc[idxs, 'cluster'] = clusters.astype(int)
 mask = ~df.loc[idxs].label.isna()
 
@@ -55,7 +57,7 @@ plt.figure(figsize=(20, 10))
 plt.scatter(X[clusters==-1,0], X[clusters==-1,1], s=2, alpha=.2, color='Grey')
 plt.scatter(X[clusters!=-1,0], X[clusters!=-1,1], s=2, c=clusters[clusters!=-1], cmap='tab20')
 plt.tight_layout()
-plt.savefig(f'{args.specie}/{modelname[:-5]}_projection_clusters.png')
+plt.savefig(f'{args.specie}/projections/{modelname[:-5]}_projection_clusters.png')
 
 plt.figure(figsize=(20, 10))
 plt.scatter(X[~mask,0], X[~mask,1], s=2, alpha=.2, color='Grey')
@@ -63,7 +65,7 @@ for l, grp in df.groupby('label'):
     plt.scatter(X[df.loc[idxs].label==l, 0], X[df.loc[idxs].label==l, 1], s=4, label=l)
 plt.legend()
 plt.tight_layout()
-plt.savefig(f'{args.specie}/{modelname[:-5]}_projection_labels.png')
+plt.savefig(f'{args.specie}/projections/{modelname[:-5]}_projection_labels.png')
 
 
 clusters, labels = clusters[mask], df.loc[idxs[mask]].label

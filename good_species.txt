@@ -5,4 +5,3 @@ cassin_vireo
 black-headed_grosbeaks
 humpback
 dolphin
-otter

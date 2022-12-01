@@ -67,7 +67,7 @@ for epoch in range(100_000//len(loader)):
 
         if len(loss) > 2000 and np.median(loss[-2000:-1000]) < np.median(loss[-1000:]):
             print('Early stop')
-            torch.save(model.state_dict(), f'{args.specie}/{modelname}')
+            torch.save(model.state_dict(), f'{args.specie}/weights/{modelname}')
             exit()
         step += 1
         continue
